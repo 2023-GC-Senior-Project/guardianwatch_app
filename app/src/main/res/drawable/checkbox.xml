@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 체크됐을 때의 상태 -->
+    <item android:drawable="@drawable/ic_checked" android:state_checked="true" />
+    <!-- 체크되지 않았을 때의 상태 -->
+    <item android:drawable="@drawable/ic_unchecked" />
+</selector>

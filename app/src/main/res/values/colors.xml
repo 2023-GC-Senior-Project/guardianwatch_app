@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="my_primary">#A0E2E2</color>
+    <color name="my_on_primary">#000000</color>
+    <!-- 다른 색상 정의 -->
+</resources>
