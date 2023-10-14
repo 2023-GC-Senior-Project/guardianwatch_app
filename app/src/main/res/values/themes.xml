@@ -5,6 +5,11 @@
 <!--        <item name="colorPrimary">@color/my_primary</item>-->
 <!--        <item name="colorOnPrimary">@color/my_on_primary</item>-->
     </style>
+    <style name="CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 
     <style name="Theme.GuardianWatch" parent="Base.Theme.GuardianWatch" />
 </resources>
