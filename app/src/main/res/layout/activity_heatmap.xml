@@ -14,39 +14,39 @@
         android:layout_width="74dp"
         android:layout_height="68dp"
         android:src="@drawable/ic_arrow_left"
-        android:tint="#80000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.01"
+        app:tint="#80000000" />
 
     <ImageView
         android:id="@+id/backArrowLeft"
         android:layout_width="74dp"
         android:layout_height="68dp"
         android:src="@drawable/ic_arrow_left"
-        android:tint="#80000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.111" />
+        app:layout_constraintVertical_bias="0.111"
+        app:tint="#80000000" />
 
     <ImageView
-        android:id="@+id/backArrowLeft"
+        android:id="@+id/backArrowRight"
         android:layout_width="74dp"
         android:layout_height="68dp"
         android:src="@drawable/ic_arrow_right"
-        android:tint="#80000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.111" />
+        app:layout_constraintVertical_bias="0.111"
+        app:tint="#80000000" />
 
     <TextView
         android:id="@+id/heatmapActivityDay"
