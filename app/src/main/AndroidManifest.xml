@@ -25,7 +25,12 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@drawable/rounded_button" />
-
+        <activity
+            android:name=".GraphActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HeatmapActivity"
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
