@@ -39,12 +39,12 @@ public class NotificationListActivity extends AppCompatActivity {
         CustomAdapter_Notification customAdapter = new CustomAdapter_Notification(testDataSet);
         recyclerView.setAdapter(customAdapter); // 어댑터 설정
 
-        //뒤로가기 버튼 누를 시에 로그인 페이지로 이동
+        //뒤로가기 버튼 누를 시에 메인 페이지로 이동
         View backArrow = findViewById(R.id.backArrow);
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
