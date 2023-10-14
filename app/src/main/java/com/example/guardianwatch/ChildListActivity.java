@@ -5,6 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.graphics.drawable.Icon;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,31 +18,65 @@ import java.util.ArrayList;
 
 public class ChildListActivity extends AppCompatActivity {
 
+    TextView childRegisterText;
+    ImageView backArrow;
+    public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
+
+        private final int verticalSpaceHeight;
+
+        public VerticalSpaceItemDecoration(int verticalSpaceHeight) {
+            this.verticalSpaceHeight = verticalSpaceHeight;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            outRect.bottom = verticalSpaceHeight;
+
+            // 첫 번째 아이템 위에 간격을 추가하려면
+            if (parent.getChildAdapterPosition(view) == 0) {
+                outRect.top = verticalSpaceHeight;
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_list);
 
-        //===== 테스트를 위한 더미 데이터 생성 ===================
-        ArrayList<String> testDataSet = new ArrayList<>();
-        for (int i = 0; i<20; i++) {
-            testDataSet.add("TEST DATA" + i);
-        }
-        //========================================================
+        //아이등록 누를시에 아이등록 페이지로 이동
+        childRegisterText=findViewById(R.id.childRegister);
+        childRegisterText.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View v) {
+                                                     Intent intent = new Intent(getApplicationContext(), ChildRegisterActivity.class);
+                                                     startActivity(intent);
+                                                 }
+                                             });
+        //뒤로가기 버튼 누를 시에 아이 리스트 페이지로 이동
+        backArrow=findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        ArrayList<ChildData> childDataList = new ArrayList<>();
+        childDataList.add(new ChildData("김서준", "2018. 7. 28.", "가천 어린이집",R.drawable.kim_image));
+        childDataList.add(new ChildData("이지안", "2019. 2. 18.", "가천 어린이집",R.drawable.lee_image));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
-        //--- LayoutManager는 아래 3가지중 하나를 선택하여 사용 ---
-        // 1) LinearLayoutManager()
-        // 2) GridLayoutManager()
-        // 3) StaggeredGridLayoutManager()
-        //---------------------------------------------------------
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
-        recyclerView.setLayoutManager(linearLayoutManager);  // LayoutManager 설정
+        CustomAdapter customAdapter = new CustomAdapter(childDataList);
+        recyclerView.setAdapter(customAdapter);
 
-        CustomAdapter customAdapter = new CustomAdapter(testDataSet);
-        recyclerView.setAdapter(customAdapter); // 어댑터 설정
-
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.item_offset);
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(spacingInPixels));
     }
+
 
 }
