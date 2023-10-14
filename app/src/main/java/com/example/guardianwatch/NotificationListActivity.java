@@ -46,6 +46,7 @@ public class NotificationListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
