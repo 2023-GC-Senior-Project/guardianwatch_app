@@ -169,32 +169,17 @@
 
     <TextView
         android:id="@+id/text2"
-        android:layout_width="76dp"
-        android:layout_height="25dp"
+        android:layout_width="75dp"
+        android:layout_height="26dp"
         android:text="회원가입"
         android:textColor="#207C98"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintHorizontal_bias="0.808"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.895" />
-
-
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="47dp"
-        android:layout_height="25dp"
-        android:text="하기"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.895" />
+        app:layout_constraintVertical_bias="0.899" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:text="GuardianWatch"
+        android:textStyle="bold"
+
         android:textColor="#207C98"
         android:textSize="40sp" />
 </LinearLayout>

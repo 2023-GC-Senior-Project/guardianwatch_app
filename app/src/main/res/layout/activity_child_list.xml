@@ -9,6 +9,37 @@
     tools:layout_editor_absoluteX="-1dp"
     tools:layout_editor_absoluteY="0dp">
 
+    <ImageView
+        android:id="@+id/backArrow"
+        android:layout_width="74dp"
+        android:layout_height="68dp"
+        android:src="@drawable/ic_arrow_left"
+        android:tint="#80000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="76dp"
+        android:layout_height="35dp"
+        android:text="아이 등록"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <Button
         android:id="@+id/editBtn"
