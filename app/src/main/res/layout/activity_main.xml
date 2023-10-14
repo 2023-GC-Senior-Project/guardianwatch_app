@@ -151,7 +151,7 @@
         android:id="@+id/alarmText"
         android:layout_width="92dp"
         android:layout_height="36dp"
-        android:text="알람"
+        android:text="알림"
         android:textColor="#6B7B5D"
         android:textSize="27sp"
         android:textStyle="bold"

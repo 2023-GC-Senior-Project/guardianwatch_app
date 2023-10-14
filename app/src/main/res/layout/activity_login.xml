@@ -42,7 +42,7 @@
         android:id="@+id/subTitle"
         android:layout_width="197dp"
         android:layout_height="28dp"
-        android:text="우리 아이의 안전 파트너,"
+        android:text="우리 아이의 안전 파트너"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
