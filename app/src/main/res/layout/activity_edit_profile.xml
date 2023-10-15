@@ -22,21 +22,23 @@
         app:layout_constraintVertical_bias="0.01"
         app:tint="#80000000" />
 
-    <ImageView
+
+
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/circular_image"
         android:clickable="true"
         android:focusable="true"
         android:scaleType="centerCrop"
+        android:src="@drawable/circular_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.134"
+        app:shapeAppearanceOverlay="@style/CircleImageView" />
 
     <TextView
         android:id="@+id/nameLabel"
