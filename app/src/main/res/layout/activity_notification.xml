@@ -14,13 +14,13 @@
         android:layout_width="74dp"
         android:layout_height="68dp"
         android:src="@drawable/ic_arrow_left"
-        android:tint="#80000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.01"
+        app:tint="#80000000" />
 
     <View
         android:id="@+id/notificationAll"
@@ -110,7 +110,7 @@
         app:layout_constraintVertical_bias="0.106" />
 
     <View
-        android:id="@+id/notificationActivity"
+        android:id="@+id/notificationAction"
         android:layout_width="65dp"
         android:layout_height="35dp"
         android:background="@drawable/rectangle6"
@@ -125,7 +125,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/notificationActivityText"
+        android:id="@+id/notificationActionText"
         android:layout_width="42dp"
         android:layout_height="34dp"
         android:text="활동"
