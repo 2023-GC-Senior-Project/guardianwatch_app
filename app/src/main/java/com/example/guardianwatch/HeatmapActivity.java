@@ -99,8 +99,9 @@ public class HeatmapActivity extends AppCompatActivity  {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         HeatmapActivity.this,
                         (view, year, month, dayOfMonth) -> {
-                            heatmapActivityDate.setText(year+"년 "+month+"월");
-                            heatmapActivityDay.setText(day+"");
+                            int monthT = month + 1;
+                            heatmapActivityDate.setText(year+"년 "+monthT+"월");
+                            heatmapActivityDay.setText(dayOfMonth+"");
                         },
                         calendarTime.get(Calendar.YEAR),
                         calendarTime.get(Calendar.MONTH),

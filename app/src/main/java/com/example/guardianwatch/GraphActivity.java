@@ -123,8 +123,9 @@ public class GraphActivity extends AppCompatActivity  {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         GraphActivity.this,
                         (view, year, month, dayOfMonth) -> {
-                            graphActivityDate.setText(year+"년 "+month+"월");
-                            graphActivityDay.setText(day+"");
+                            int monthT = month + 1;
+                            graphActivityDate.setText(year+"년 "+monthT+"월");
+                            graphActivityDay.setText(dayOfMonth+"");
                         },
                         calendarTime.get(Calendar.YEAR),
                         calendarTime.get(Calendar.MONTH),
