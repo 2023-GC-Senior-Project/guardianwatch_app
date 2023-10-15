@@ -5,10 +5,12 @@ public class NotificationData {
     private String text2;
     private String text3;
 
-    public NotificationData(String text1, String text2, String text3) {
+    private String category;
+    public NotificationData(String text1, String text2, String text3,String category) {
         this.text1 = text1;
         this.text2 = text2;
         this.text3 = text3;
+        this.category = category;
     }
 
     public String getText1() {
@@ -34,4 +36,8 @@ public class NotificationData {
     public void setText3(String text3) {
         this.text3 = text3;
     }
+
+    public String getCategory() { return category; }
+
+    public void setCategory(String category){this.category = category;}
 }

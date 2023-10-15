@@ -26,6 +26,8 @@ public class NotificationListActivity extends AppCompatActivity {
     TextView notificationSafeText;
     TextView notificationEatText;
     TextView notificationActionText;
+
+    int flag=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +38,16 @@ public class NotificationListActivity extends AppCompatActivity {
         notificationEat=findViewById(R.id.notificationEat);
         notificationAction=findViewById(R.id.notificationAction);
         notificationAllText=findViewById(R.id.notificationAllText);
-        notificationAllText=findViewById(R.id.notificationAllText);
+        notificationEatText=findViewById(R.id.notificationEatText);
         notificationSafeText=findViewById(R.id.notificationSafeText);
         notificationActionText=findViewById(R.id.notificationActionText);
 
         List<NotificationData> testDataSet = new ArrayList<>();
+        testDataSet.add(new NotificationData("지안이가 넘어졌어요.","2023/10/15 17:42","방금 전","safe"));
+        testDataSet.add(new NotificationData("지안이가 뛰어 놀고 있어요.","2023/10/15 17:33","10분 전","action"));
+        testDataSet.add(new NotificationData("지안이가 밥을 먹고 있어요.","2023/10/15 13:09","4시간 전","action"));
+        testDataSet.add(new NotificationData("지안이가 친구와 말하고 있어요.","2023/10/15 12:33","5시간 전","action"));
+        testDataSet.add(new NotificationData("지안이가 밥을 먹고 있어요.","2023/10/15 10:27","7시간 전","eat"));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewNotification);
 
@@ -69,17 +76,12 @@ public class NotificationListActivity extends AppCompatActivity {
                 notificationEat.setBackgroundResource(R.drawable.rectangle6);
                 notificationAction.setBackgroundResource(R.drawable.rectangle6);
 
-                notificationAllText.setTextColor(Color.parseColor("#FFFFFF"));
-                notificationSafeText.setTextColor(Color.parseColor("#000000"));
-                notificationEatText.setTextColor(Color.parseColor("#000000"));
-                notificationActionText.setTextColor(Color.parseColor("#000000"));
+                notificationAllText.setTextColor(Color.WHITE);
+                notificationSafeText.setTextColor(Color.BLACK);
+                notificationEatText.setTextColor(Color.BLACK);
+                notificationActionText.setTextColor(Color.BLACK);
 
-                testDataSet.clear();
-                testDataSet.add(new NotificationData("지안이가 밥을 먹고 있어요.","2023/10/15 10:27","7시간 전"));
-                testDataSet.add(new NotificationData("지안이가 친구와 말하고 있어요.","2023/10/15 12:33","5시간 전"));
-                testDataSet.add(new NotificationData("지안이가 밥을 먹고 있어요.","2023/10/15 13:09","4시간 전"));
-                testDataSet.add(new NotificationData("지안이가 뛰어 놀고 있어요.","2023/10/15 17:33","10분 전"));
-                testDataSet.add(new NotificationData("지안이가 넘어졌어요.","2023/10/15 17:42","방금 전"));
+                customAdapter.filter(null);
             }
         });
 
@@ -91,14 +93,12 @@ public class NotificationListActivity extends AppCompatActivity {
                 notificationEat.setBackgroundResource(R.drawable.rectangle6);
                 notificationAction.setBackgroundResource(R.drawable.rectangle6);
 
-                notificationAllText.setTextColor(Color.parseColor("#000000"));
-                notificationSafeText.setTextColor(Color.parseColor("#FFFFFF"));
-                notificationEatText.setTextColor(Color.parseColor("#000000"));
-                notificationActionText.setTextColor(Color.parseColor("#000000"));
+                notificationAllText.setTextColor(Color.BLACK);
+                notificationSafeText.setTextColor(Color.WHITE);
+                notificationEatText.setTextColor(Color.BLACK);
+                notificationActionText.setTextColor(Color.BLACK);
 
-                testDataSet.clear();
-                testDataSet.add(new NotificationData("지안이가 넘어졌어요.","2023/10/15 17:42","방금 전"));
-
+                customAdapter.filter("safe");
             }
         });
 
@@ -110,14 +110,13 @@ public class NotificationListActivity extends AppCompatActivity {
                 notificationEat.setBackgroundResource(R.drawable.rectangle5);
                 notificationAction.setBackgroundResource(R.drawable.rectangle6);
 
-                notificationAllText.setTextColor(Color.parseColor("#000000"));
-                notificationSafeText.setTextColor(Color.parseColor("#000000"));
-                notificationEatText.setTextColor(Color.parseColor("#FFFFFF"));
-                notificationActionText.setTextColor(Color.parseColor("#000000"));
+                notificationAllText.setTextColor(Color.BLACK);
+                notificationSafeText.setTextColor(Color.BLACK);
+                notificationEatText.setTextColor(Color.WHITE);
+                notificationActionText.setTextColor(Color.BLACK);
 
-                testDataSet.clear();
-                testDataSet.add(new NotificationData("지안이가 밥을 먹고 있어요.","2023/10/15 10:27","7시간 전"));
-                testDataSet.add(new NotificationData("지안이가 밥을 먹고 있어요.","2023/10/15 13:09","4시간 전"));
+                customAdapter.filter("eat");
+
             }
         });
 
@@ -129,17 +128,16 @@ public class NotificationListActivity extends AppCompatActivity {
                 notificationEat.setBackgroundResource(R.drawable.rectangle6);
                 notificationAction.setBackgroundResource(R.drawable.rectangle5);
 
-                notificationAllText.setTextColor(Color.parseColor("#000000"));
-                notificationSafeText.setTextColor(Color.parseColor("#000000"));
-                notificationEatText.setTextColor(Color.parseColor("#000000"));
-                notificationActionText.setTextColor(Color.parseColor("#FFFFFF"));
+                notificationAllText.setTextColor(Color.BLACK);
+                notificationSafeText.setTextColor(Color.BLACK);
+                notificationEatText.setTextColor(Color.BLACK);
+                notificationActionText.setTextColor(Color.WHITE);
 
-                testDataSet.clear();
-                testDataSet.add(new NotificationData("지안이가 친구와 말하고 있어요.","2023/10/15 12:33","5시간 전"));
-                testDataSet.add(new NotificationData("지안이가 뛰어 놀고 있어요.","2023/10/15 17:33","10분 전"));
+                customAdapter.filter("action");
 
             }
         });
+
 
 
     }

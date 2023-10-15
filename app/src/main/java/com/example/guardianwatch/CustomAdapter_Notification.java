@@ -15,6 +15,19 @@ public class CustomAdapter_Notification extends RecyclerView.Adapter<CustomAdapt
 
     private List<NotificationData> localDataSet;
 
+    public void filter(String category) {
+        List<NotificationData> filteredData = new ArrayList<>();
+
+        for (NotificationData notificationData : localDataSet) {
+            if (notificationData.getCategory().equals(category)) {
+                filteredData.add(notificationData);
+            }
+        }
+
+        localDataSet = filteredData;
+        notifyDataSetChanged();
+    }
+
     //===== 뷰홀더 클래스 =====================================================
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textView1;
