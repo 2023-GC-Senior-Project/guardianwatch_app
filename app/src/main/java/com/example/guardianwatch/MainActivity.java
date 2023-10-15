@@ -35,21 +35,21 @@ public class MainActivity extends AppCompatActivity {
         alarmView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HeatmapActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NotificationListActivity.class);
                 startActivity(intent);
             }
         });
         activityAmountView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotificationListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GraphActivity.class);
                 startActivity(intent);
             }
         });
         activityRecordView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GraphActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HeatmapActivity.class);
                 startActivity(intent);
             }
         });

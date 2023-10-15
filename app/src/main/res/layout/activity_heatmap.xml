@@ -99,7 +99,7 @@
 
     <ImageView
         android:id="@+id/textBox"
-        android:layout_width="500dp"
+        android:layout_width="300dp"
         android:layout_height="200dp"
         android:src="@drawable/textbox_background"
         app:layout_constraintBottom_toBottomOf="parent"
