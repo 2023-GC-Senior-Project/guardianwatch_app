@@ -9,8 +9,8 @@
 
     <View
         android:id="@+id/childListView"
-        android:layout_width="274dp"
-        android:layout_height="362dp"
+        android:layout_width="272dp"
+        android:layout_height="267dp"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,17 +28,16 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <View
         android:id="@+id/parentView"
         android:layout_width="111dp"
         android:layout_height="116dp"
         android:background="@drawable/rectangle_shape"
-        android:backgroundTint="#A0E2E2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.124"
@@ -48,17 +47,17 @@
 
     <TextView
         android:id="@+id/parentLabel"
-        android:layout_width="82dp"
-        android:layout_height="137dp"
+        android:layout_width="81dp"
+        android:layout_height="130dp"
         android:text="학부모로 가입하기"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
+        app:layout_constraintVertical_bias="0.762" />
 
     <View
         android:id="@+id/teacherView"
@@ -76,7 +75,7 @@
         android:id="@+id/teacherLabel"
         android:layout_width="105dp"
         android:layout_height="121dp"
-        android:text="선생님으로\n 가입하기"
+        android:text="선생님으로\n  가입하기"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -84,7 +83,7 @@
         app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623" />
+        app:layout_constraintVertical_bias="0.722" />
 
     <TextView
         android:id="@+id/nextText"
@@ -92,13 +91,13 @@
         android:layout_height="38dp"
         android:text="다음"
         android:textColor="#000000"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.996"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
+        app:layout_constraintVertical_bias="0.93" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
