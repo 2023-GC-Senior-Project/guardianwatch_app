@@ -116,6 +116,26 @@ public class GraphActivity extends AppCompatActivity  {
             }
         });
 
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 날짜 선택 다이얼로그를 띄운다.
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        GraphActivity.this,
+                        (view, year, month, dayOfMonth) -> {
+                            int monthT = month + 1;
+                            graphActivityDate.setText(year+"년 "+monthT+"월");
+                            graphActivityDay.setText(dayOfMonth+"");
+                        },
+                        calendarTime.get(Calendar.YEAR),
+                        calendarTime.get(Calendar.MONTH),
+                        calendarTime.get(Calendar.DAY_OF_MONTH)
+                );
+                datePickerDialog.show();
+
+
+            }
+        });
 
     }
 }
