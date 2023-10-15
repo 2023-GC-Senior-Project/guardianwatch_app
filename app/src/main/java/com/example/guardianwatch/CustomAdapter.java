@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private static ArrayList<ChildData> localDataSet;
+    private ArrayList<ChildData> localDataSet;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTextView, birthDateTextView, placeTextView;
@@ -84,9 +85,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public void onBindViewHolder(@NonNull CustomAdapter.ViewHolder holder, int position) {
         ChildData data = localDataSet.get(position);
         holder.nameTextView.setText(data.getName());
-        holder.birthDateTextView.setText(data.getBirthDate());
+        holder.birthDateTextView.setText(data.getYear()+"."+data.getMonth()+"."+data.getDay());
         holder.placeTextView.setText(data.getPlace());
-        holder.profileImageView.setImageResource(data.getImageResId());  // 사진 설정
+
+        Uri imageUri = Uri.parse(data.getImageUri());
+        holder.profileImageView.setImageURI(imageUri);
     }
 
     @Override

@@ -1,33 +1,52 @@
 package com.example.guardianwatch;
 
-public class ChildData {
+import java.io.Serializable;
+
+public class ChildData implements Serializable {
     private String name;
-    private String birthDate;
+    private String year;
+    private String month;
+    private String day;
     private String place;
-    private int imageResId;
-    private int sex;
-    public ChildData(String name, String birthDate, String place, int imageResId, int sex) {
+    private String imageUri;
+    private int gender;
+
+    public ChildData(String name, String year, String month, String day, String place, String imageUri, int gender) {
         this.name = name;
-        this.birthDate = birthDate;
+        this.year=year;
+        this.month = month;
+        this.day=day;
         this.place = place;
-        this.imageResId = imageResId;
-        this.sex = sex;
+        this.imageUri = imageUri;
+        this.gender = gender;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public int getGender() {
+        return gender;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getBirthDate() {
-        return birthDate;
-    }
 
     public String getPlace() {
         return place;
     }
-    public int getImageResId() {
-        return imageResId;
+    public String getImageUri() {
+        return imageUri;
     }
 
-    public int getSex() { return sex; }
 }

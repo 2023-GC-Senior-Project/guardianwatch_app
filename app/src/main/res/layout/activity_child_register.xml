@@ -93,59 +93,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.464" />
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <View
-        android:id="@+id/girlView"
-        android:layout_width="144dp"
-        android:layout_height="36dp"
-        android:background="@drawable/rectangle_shape"
-        android:backgroundTint="#A0E2E2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.517" />
-
-    <TextView
-        android:id="@+id/girlLabel"
-        android:layout_width="40dp"
-        android:layout_height="32dp"
-        android:text="여자"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.301"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519" />
-
-    <View
-        android:id="@+id/boyView"
-        android:layout_width="144dp"
-        android:layout_height="36dp"
-        android:background="@drawable/rectangle_shape"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.517" />
-
-    <TextView
-        android:id="@+id/boyLabel"
-        android:layout_width="40dp"
-        android:layout_height="32dp"
-        android:text="남자"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.727"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/birthLabel"
@@ -231,7 +184,7 @@
         app:layout_constraintVertical_bias="0.64" />
 
     <EditText
-        android:id="@+id/mondthEditText"
+        android:id="@+id/monthEditText"
         android:layout_width="40dp"
         android:layout_height="45dp"
         android:layout_weight="10"
@@ -376,5 +329,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.954"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+    <RadioGroup
+        android:layout_width="310dp"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.584"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537">
+
+        <RadioButton
+            android:id="@+id/radioButtonGirl"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:buttonTint="#A0E2E2"
+            android:text="여자"
+            android:textSize="17dp"
+
+            tools:layout_editor_absoluteX="174dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+        <View
+            android:layout_width="36dp"
+            android:layout_height="50dp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonBoy"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:buttonTint="#A0E2E2"
+            android:text="남자"
+            android:textSize="17dp"
+            tools:layout_editor_absoluteX="59dp"
+            tools:layout_editor_absoluteY="364dp" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

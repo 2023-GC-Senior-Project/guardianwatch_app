@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -18,8 +19,11 @@ import java.util.ArrayList;
 
 public class ChildListActivity extends AppCompatActivity {
 
+    private static final int CHILD_REGISTER_REQUEST_CODE = 101;
+
     TextView childRegisterText;
     ImageView backArrow;
+
     public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
 
         private final int verticalSpaceHeight;
@@ -38,7 +42,8 @@ public class ChildListActivity extends AppCompatActivity {
             }
         }
     }
-
+    static ArrayList<ChildData> childDataList = new ArrayList<>();
+    CustomAdapter customAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +55,7 @@ public class ChildListActivity extends AppCompatActivity {
                                                  @Override
                                                  public void onClick(View v) {
                                                      Intent intent = new Intent(getApplicationContext(), ChildRegisterActivity.class);
-                                                     startActivity(intent);
+                                                     startActivityForResult(intent, CHILD_REGISTER_REQUEST_CODE);
                                                  }
                                              });
         //뒤로가기 버튼 누를 시에 아이 리스트 페이지로 이동
@@ -63,19 +68,33 @@ public class ChildListActivity extends AppCompatActivity {
                 finish();
             }
         });
-        ArrayList<ChildData> childDataList = new ArrayList<>();
-        childDataList.add(new ChildData("김서준", "2018. 7. 28.", "가천 어린이집",R.drawable.kim_image,3));
-        childDataList.add(new ChildData("이지안", "2019. 2. 18.", "가천 어린이집",R.drawable.lee_image,4));
+
+        String uriString1 = "android.resource://" + getPackageName() + "/" + R.drawable.lee_image;
+        childDataList.add(new ChildData("이지안", "2019", "2", "18", "가천 어린이집", uriString1, 1));
+
+        String uriString2 = "android.resource://" + getPackageName() + "/" + R.drawable.kim_image;
+
+        childDataList.add(new ChildData("김서준", "2018","7","28", "가천 어린이집",uriString2,0));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        CustomAdapter customAdapter = new CustomAdapter(childDataList);
+        customAdapter = new CustomAdapter(childDataList);
         recyclerView.setAdapter(customAdapter);
 
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.item_offset);
         recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(spacingInPixels));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CHILD_REGISTER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            ChildData newChild = (ChildData) data.getSerializableExtra("newChild");
+            childDataList.add(newChild);
+            customAdapter.notifyDataSetChanged();
+        }
     }
 
 
