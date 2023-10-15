@@ -17,11 +17,16 @@ import android.widget.TextView;
 public class GraphActivity extends AppCompatActivity  {
 
     ImageView backArrow;
-
     TextView graphActivityDate;
-
     TextView graphActivityDay;
-
+    ImageView ArrowLeft;
+    ImageView ArrowRight;
+    TextView graphSentence1;
+    TextView graphSentence2;
+    TextView graphSentence3;
+    ImageView useKcal;
+    ImageView moveDistance;
+    ImageView calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,14 @@ public class GraphActivity extends AppCompatActivity  {
 
         graphActivityDate=findViewById(R.id.graphActivityDate);
         graphActivityDay=findViewById(R.id.graphActivityDay);
+        ArrowLeft=findViewById(R.id.ArrowLeft);
+        ArrowRight=findViewById(R.id.ArrowRight);
+        graphSentence1=findViewById(R.id.graphSentence1);
+        graphSentence2=findViewById(R.id.graphSentence2);
+        graphSentence3=findViewById(R.id.graphSentence3);
+        useKcal=findViewById(R.id.useKcal);
+        moveDistance=findViewById(R.id.moveDistance);
+        calendar=findViewById(R.id.calendar);
 
         //뒤로가기 버튼 누를 시에 로그인 페이지로 이동
         backArrow=findViewById(R.id.backArrow);
@@ -41,6 +54,23 @@ public class GraphActivity extends AppCompatActivity  {
                 finish();
             }
         });
+
+        useKcal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                useKcal.setImageResource(R.drawable.rectangle11);
+                moveDistance.setImageResource(R.drawable.rectangle7);
+            }
+        });
+
+        moveDistance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                useKcal.setImageResource(R.drawable.rectangle7);
+                moveDistance.setImageResource(R.drawable.rectangle10);
+            }
+        });
+
 
     }
 }
