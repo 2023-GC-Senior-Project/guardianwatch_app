@@ -99,17 +99,16 @@ public class HeatmapActivity extends AppCompatActivity  {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         HeatmapActivity.this,
                         (view, year, month, dayOfMonth) -> {
-                            // 선택한 날짜를 Toast로 출력한다.
-                            calendarTime.set(year,month,dayOfMonth);
+                            heatmapActivityDate.setText(year+"년 "+month+"월");
+                            heatmapActivityDay.setText(day+"");
                         },
                         calendarTime.get(Calendar.YEAR),
-                        calendarTime.get(Calendar.MONTH) + 1,
+                        calendarTime.get(Calendar.MONTH),
                         calendarTime.get(Calendar.DAY_OF_MONTH)
                 );
                 datePickerDialog.show();
 
-                heatmapActivityDate.setText(year+"년 "+month+"월");
-                heatmapActivityDay.setText(day+"");
+
             }
         });
     }
