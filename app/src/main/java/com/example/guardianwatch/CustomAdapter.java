@@ -87,7 +87,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.birthDateTextView.setText(data.getBirthDate());
         holder.placeTextView.setText(data.getPlace());
         holder.profileImageView.setImageResource(data.getImageResId());  // 사진 설정
-
     }
 
     @Override

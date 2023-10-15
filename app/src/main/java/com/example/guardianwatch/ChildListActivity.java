@@ -64,8 +64,8 @@ public class ChildListActivity extends AppCompatActivity {
             }
         });
         ArrayList<ChildData> childDataList = new ArrayList<>();
-        childDataList.add(new ChildData("김서준", "2018. 7. 28.", "가천 어린이집",R.drawable.kim_image));
-        childDataList.add(new ChildData("이지안", "2019. 2. 18.", "가천 어린이집",R.drawable.lee_image));
+        childDataList.add(new ChildData("김서준", "2018. 7. 28.", "가천 어린이집",R.drawable.kim_image,3));
+        childDataList.add(new ChildData("이지안", "2019. 2. 18.", "가천 어린이집",R.drawable.lee_image,4));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

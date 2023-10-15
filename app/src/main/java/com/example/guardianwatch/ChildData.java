@@ -5,12 +5,13 @@ public class ChildData {
     private String birthDate;
     private String place;
     private int imageResId;
-    public ChildData(String name, String birthDate, String place, int imageResId) {
+    private int sex;
+    public ChildData(String name, String birthDate, String place, int imageResId, int sex) {
         this.name = name;
         this.birthDate = birthDate;
         this.place = place;
         this.imageResId = imageResId;
-
+        this.sex = sex;
     }
 
     public String getName() {
@@ -27,4 +28,6 @@ public class ChildData {
     public int getImageResId() {
         return imageResId;
     }
+
+    public int getSex() { return sex; }
 }
