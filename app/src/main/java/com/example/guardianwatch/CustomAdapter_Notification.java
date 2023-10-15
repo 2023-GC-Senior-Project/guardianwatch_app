@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomAdapter_Notification extends RecyclerView.Adapter<CustomAdapter_Notification.ViewHolder>{
 
     private List<NotificationData> localDataSet;
-
+    private List<NotificationData> originalDataSet;
     public void filter(String category) {
         List<NotificationData> filteredData = new ArrayList<>();
 
@@ -25,6 +25,11 @@ public class CustomAdapter_Notification extends RecyclerView.Adapter<CustomAdapt
         }
 
         localDataSet = filteredData;
+        notifyDataSetChanged();
+    }
+
+    public void reset() {
+        localDataSet = originalDataSet;
         notifyDataSetChanged();
     }
 
@@ -55,6 +60,7 @@ public class CustomAdapter_Notification extends RecyclerView.Adapter<CustomAdapt
     // 생성자를 통해서 데이터를 전달받도록 함
     public CustomAdapter_Notification(List<NotificationData> dataSet) {
         localDataSet = dataSet;
+        originalDataSet = dataSet;
     }
     //--------------------------------------------------
 

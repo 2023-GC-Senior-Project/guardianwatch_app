@@ -27,7 +27,6 @@ public class NotificationListActivity extends AppCompatActivity {
     TextView notificationEatText;
     TextView notificationActionText;
 
-    int flag=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +79,7 @@ public class NotificationListActivity extends AppCompatActivity {
                 notificationSafeText.setTextColor(Color.BLACK);
                 notificationEatText.setTextColor(Color.BLACK);
                 notificationActionText.setTextColor(Color.BLACK);
-
-                customAdapter.filter(null);
+                customAdapter.reset();
             }
         });
 
@@ -97,7 +95,7 @@ public class NotificationListActivity extends AppCompatActivity {
                 notificationSafeText.setTextColor(Color.WHITE);
                 notificationEatText.setTextColor(Color.BLACK);
                 notificationActionText.setTextColor(Color.BLACK);
-
+                customAdapter.reset();
                 customAdapter.filter("safe");
             }
         });
@@ -114,7 +112,7 @@ public class NotificationListActivity extends AppCompatActivity {
                 notificationSafeText.setTextColor(Color.BLACK);
                 notificationEatText.setTextColor(Color.WHITE);
                 notificationActionText.setTextColor(Color.BLACK);
-
+                customAdapter.reset();
                 customAdapter.filter("eat");
 
             }
@@ -132,7 +130,7 @@ public class NotificationListActivity extends AppCompatActivity {
                 notificationSafeText.setTextColor(Color.BLACK);
                 notificationEatText.setTextColor(Color.BLACK);
                 notificationActionText.setTextColor(Color.WHITE);
-
+                customAdapter.reset();
                 customAdapter.filter("action");
 
             }
