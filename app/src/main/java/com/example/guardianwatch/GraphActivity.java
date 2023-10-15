@@ -105,6 +105,10 @@ public class GraphActivity extends AppCompatActivity  {
             public void onClick(View view) {
                 useKcal.setImageResource(R.drawable.rectangle11);
                 moveDistance.setImageResource(R.drawable.rectangle7);
+                graphSentence1.setText("오늘 또래 평균보다 400kcal 높습니다.");
+                graphSentence2.setText("7일 평균 활동량이 또래 평균보다 높습니다.");
+                graphSentence3.setText("1달 평균 활동량이 또래 평균보다 높습니다.");
+
             }
         });
 
@@ -113,6 +117,10 @@ public class GraphActivity extends AppCompatActivity  {
             public void onClick(View view) {
                 useKcal.setImageResource(R.drawable.rectangle7);
                 moveDistance.setImageResource(R.drawable.rectangle10);
+                graphSentence1.setText("오늘 또래 평균보다 800m 낮습니다.");
+                graphSentence2.setText("7일 평균 활동량이 또래 평균보다 낮습니다.");
+                graphSentence3.setText("1달 평균 활동량이 또래 평균보다 낮습니다.");
+
             }
         });
 
