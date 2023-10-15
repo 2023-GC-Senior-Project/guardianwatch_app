@@ -1,11 +1,14 @@
 package com.example.guardianwatch;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -83,6 +86,27 @@ public class HeatmapActivity extends AppCompatActivity  {
                 int year = calendarTime.get(Calendar.YEAR);
                 int month = calendarTime.get(Calendar.MONTH) + 1;
                 int day = calendarTime.get(Calendar.DAY_OF_MONTH);
+
+                heatmapActivityDate.setText(year+"년 "+month+"월");
+                heatmapActivityDay.setText(day+"");
+            }
+        });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 날짜 선택 다이얼로그를 띄운다.
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        HeatmapActivity.this,
+                        (view, year, month, dayOfMonth) -> {
+                            // 선택한 날짜를 Toast로 출력한다.
+                            calendarTime.set(year,month,dayOfMonth);
+                        },
+                        calendarTime.get(Calendar.YEAR),
+                        calendarTime.get(Calendar.MONTH) + 1,
+                        calendarTime.get(Calendar.DAY_OF_MONTH)
+                );
+                datePickerDialog.show();
 
                 heatmapActivityDate.setText(year+"년 "+month+"월");
                 heatmapActivityDay.setText(day+"");
