@@ -95,6 +95,17 @@ public class ChildListActivity extends AppCompatActivity {
             childDataList.add(newChild);
             customAdapter.notifyDataSetChanged();
         }
+        if(resultCode == Activity.RESULT_OK){
+            ChildData editData = (ChildData) data.getSerializableExtra("editData");
+            int position = data.getIntExtra("position",-1);
+            if(position!=-1){
+                // 편집된 내용을 ChildListActivity의 childDataList에 반영합니다.
+                childDataList.set(position, editData);
+
+                // RecyclerView를 새로고침합니다.
+                customAdapter.notifyItemChanged(position);
+            }
+        }
     }
 
 
