@@ -46,7 +46,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.118"/>
-
     <TextView
         android:id="@+id/bevActivityDay"
         android:layout_width="wrap_content"
@@ -61,17 +60,25 @@
         app:layout_constraintVertical_bias="0.109" />
 
     <TextView
+<<<<<<< Updated upstream:app/src/main/res/layout/activity_bev.xml
         android:id="@+id/bevActivityDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+=======
+        android:id="@+id/heatmapActivityDate"
+        android:layout_width="128dp"
+        android:layout_height="34dp"
+>>>>>>> Stashed changes:app/src/main/res/layout/activity_heatmap.xml
         android:text="2023년 10월"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.031" />
+
 
     <ImageView
         android:id="@+id/calendar"
