@@ -69,12 +69,14 @@ public class ChildListActivity extends AppCompatActivity {
             }
         });
 
-        String uriString1 = "android.resource://" + getPackageName() + "/" + R.drawable.lee_image;
-        childDataList.add(new ChildData("이지안", "2019", "2", "18", "가천 어린이집", uriString1, 1));
 
-        String uriString2 = "android.resource://" + getPackageName() + "/" + R.drawable.kim_image;
+        if(childDataList.isEmpty()) {
+            String uriString1 = "android.resource://" + getPackageName() + "/" + R.drawable.lee_image;
+            childDataList.add(new ChildData("이지안", "2019", "2", "18", "가천 어린이집", uriString1, 1));
 
-        childDataList.add(new ChildData("김서준", "2018","7","28", "가천 어린이집",uriString2,0));
+            String uriString2 = "android.resource://" + getPackageName() + "/" + R.drawable.kim_image;
+            childDataList.add(new ChildData("김서준", "2018","7","28", "가천 어린이집",uriString2,0));
+        }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
