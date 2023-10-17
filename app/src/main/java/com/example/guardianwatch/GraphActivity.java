@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -26,10 +27,13 @@ public class GraphActivity extends AppCompatActivity  {
     TextView graphSentence1;
     TextView graphSentence2;
     TextView graphSentence3;
+    ImageView heatmap;
     ImageView useKcal;
     ImageView moveDistance;
     ImageView calendar;
     ImageView graphView;
+
+    int flag=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +55,7 @@ public class GraphActivity extends AppCompatActivity  {
         graphSentence1=findViewById(R.id.graphSentence1);
         graphSentence2=findViewById(R.id.graphSentence2);
         graphSentence3=findViewById(R.id.graphSentence3);
+        heatmap=findViewById(R.id.heatmap);
         useKcal=findViewById(R.id.useKcal);
         moveDistance=findViewById(R.id.moveDistance);
         calendar=findViewById(R.id.calendar);
@@ -100,27 +105,42 @@ public class GraphActivity extends AppCompatActivity  {
             }
         });
 
+        heatmap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                heatmap.setImageResource(R.drawable.rectangle11);
+                useKcal.setImageResource(R.drawable.rectangle7);
+                moveDistance.setImageResource(R.drawable.rectangle7);
+                graphSentence1.setText("");
+                graphSentence2.setText("특정 장소에 오래 머물러 있었습니다.");
+                graphSentence3.setText("");
+                flag=1;
+            }
+        });
+
         useKcal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                heatmap.setImageResource(R.drawable.rectangle7);
                 useKcal.setImageResource(R.drawable.rectangle11);
                 moveDistance.setImageResource(R.drawable.rectangle7);
                 graphSentence1.setText("오늘 또래 평균보다 400kcal 높습니다.");
                 graphSentence2.setText("7일 평균 활동량이 또래 평균보다 높습니다.");
                 graphSentence3.setText("1달 평균 활동량이 또래 평균보다 높습니다.");
-
+                flag=2;
             }
         });
 
         moveDistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                heatmap.setImageResource(R.drawable.rectangle7);
                 useKcal.setImageResource(R.drawable.rectangle7);
                 moveDistance.setImageResource(R.drawable.rectangle10);
                 graphSentence1.setText("오늘 또래 평균보다 800m 낮습니다.");
                 graphSentence2.setText("7일 평균 활동량이 또래 평균보다 낮습니다.");
                 graphSentence3.setText("1달 평균 활동량이 또래 평균보다 낮습니다.");
-
+                flag=3;
             }
         });
 
@@ -139,6 +159,7 @@ public class GraphActivity extends AppCompatActivity  {
                         calendarTime.get(Calendar.MONTH),
                         calendarTime.get(Calendar.DAY_OF_MONTH)
                 );
+                datePickerDialog.getDatePicker().setBackgroundColor(Color.parseColor("#D7E7F1"));
                 datePickerDialog.show();
 
 

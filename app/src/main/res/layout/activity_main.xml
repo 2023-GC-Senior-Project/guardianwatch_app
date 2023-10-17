@@ -27,13 +27,13 @@
         android:layout_width="57dp"
         android:layout_height="47dp"
         android:src="@drawable/ic_arrow_right"
-        android:tint="#797937"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.48"
+        app:tint="#797937" />
 
     <TextView
         android:id="@+id/childListText"
@@ -83,13 +83,13 @@
         android:layout_width="57dp"
         android:layout_height="47dp"
         android:src="@drawable/ic_arrow_right"
-        android:tint="#6B787D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.48"
+        app:tint="#6B787D" />
 
     <TextView
         android:id="@+id/activityAmountText"
@@ -110,7 +110,7 @@
         android:id="@+id/activityAmountContent"
         android:layout_width="146dp"
         android:layout_height="67dp"
-        android:text="하루동안 아이의 활동 경로를 확인해보세요."
+        android:text="아이의 하루를 도표로 확인해보세요."
         android:textColor="#88000000"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -139,13 +139,13 @@
         android:layout_width="57dp"
         android:layout_height="47dp"
         android:src="@drawable/ic_arrow_right"
-        android:tint="#6B7B5D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.735" />
+        app:layout_constraintVertical_bias="0.735"
+        app:tint="#6B7B5D" />
 
     <TextView
         android:id="@+id/alarmText"
@@ -195,13 +195,13 @@
         android:layout_width="57dp"
         android:layout_height="47dp"
         android:src="@drawable/ic_arrow_right"
-        android:tint="#6B787D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.65"
+        app:tint="#6B787D" />
 
     <TextView
         android:id="@+id/activityRecordText"
@@ -222,7 +222,7 @@
         android:id="@+id/activityRecordContent"
         android:layout_width="146dp"
         android:layout_height="67dp"
-        android:text="아이의 하루 활동량을 확인해보세요."
+        android:text="아이의 하루를 영상으로 확인해보세요."
         android:textColor="#88000000"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -4,30 +4,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class HeatmapActivity extends AppCompatActivity  {
+public class BevActivity extends AppCompatActivity  {
 
     ImageView backArrow;
-    TextView heatmapActivityDate;
-    TextView heatmapActivityDay;
+    TextView bevActivityDate;
+    TextView bevActivityDay;
     ImageView ArrowLeft;
     ImageView ArrowRight;
     ImageView calendar;
     TextView longPlaceData;
     TextView longPersonData;
     TextView longActionData;
-    ImageView heatmapView;
+    ImageView bevView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_heatmap);
+        setContentView(R.layout.activity_bev);
 
         // 현재 날짜를 가져옴
         Calendar calendarTime = Calendar.getInstance();
@@ -38,18 +38,18 @@ public class HeatmapActivity extends AppCompatActivity  {
         // 일을 가져옴
         int day = calendarTime.get(Calendar.DAY_OF_MONTH);
 
-        heatmapActivityDate=findViewById(R.id.heatmapActivityDate);
-        heatmapActivityDay=findViewById(R.id.heatmapActivityDay);
+        bevActivityDate=findViewById(R.id.bevActivityDate);
+        bevActivityDay=findViewById(R.id.bevActivityDay);
         ArrowLeft=findViewById(R.id.ArrowLeft);
         ArrowRight=findViewById(R.id.ArrowRight);
         calendar=findViewById(R.id.calendar);
         longPlaceData=findViewById(R.id.longPlaceData);
         longPersonData=findViewById(R.id.longPersonData);
         longActionData=findViewById(R.id.longActionData);
-        heatmapView=findViewById(R.id.heatmapView);
+        bevView=findViewById(R.id.bevView);
 
-        heatmapActivityDate.setText(year+"년 "+month+"월");
-        heatmapActivityDay.setText(day+"");
+        bevActivityDate.setText(year+"년 "+month+"월");
+        bevActivityDay.setText(day+"");
 
         //뒤로가기 버튼 누를 시에 로그인 페이지로 이동
         backArrow=findViewById(R.id.backArrow);
@@ -72,8 +72,8 @@ public class HeatmapActivity extends AppCompatActivity  {
                 int month = calendarTime.get(Calendar.MONTH) + 1;
                 int day = calendarTime.get(Calendar.DAY_OF_MONTH);
 
-                heatmapActivityDate.setText(year+"년 "+month+"월");
-                heatmapActivityDay.setText(day+"");
+                bevActivityDate.setText(year+"년 "+month+"월");
+                bevActivityDay.setText(day+"");
             }
         });
 
@@ -87,8 +87,8 @@ public class HeatmapActivity extends AppCompatActivity  {
                 int month = calendarTime.get(Calendar.MONTH) + 1;
                 int day = calendarTime.get(Calendar.DAY_OF_MONTH);
 
-                heatmapActivityDate.setText(year+"년 "+month+"월");
-                heatmapActivityDay.setText(day+"");
+                bevActivityDate.setText(year+"년 "+month+"월");
+                bevActivityDay.setText(day+"");
             }
         });
 
@@ -97,16 +97,17 @@ public class HeatmapActivity extends AppCompatActivity  {
             public void onClick(View v) {
                 // 날짜 선택 다이얼로그를 띄운다.
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        HeatmapActivity.this,
+                        BevActivity.this,
                         (view, year, month, dayOfMonth) -> {
                             int monthT = month + 1;
-                            heatmapActivityDate.setText(year+"년 "+monthT+"월");
-                            heatmapActivityDay.setText(dayOfMonth+"");
+                            bevActivityDate.setText(year+"년 "+month+"월");
+                            bevActivityDay.setText(day+"");
                         },
                         calendarTime.get(Calendar.YEAR),
                         calendarTime.get(Calendar.MONTH),
                         calendarTime.get(Calendar.DAY_OF_MONTH)
                 );
+                datePickerDialog.getDatePicker().setBackgroundColor(Color.parseColor("#D7E7F1"));
                 datePickerDialog.show();
 
 
