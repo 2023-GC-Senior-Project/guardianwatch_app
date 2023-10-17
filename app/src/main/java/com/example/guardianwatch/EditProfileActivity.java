@@ -2,6 +2,7 @@ package com.example.guardianwatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -64,6 +65,15 @@ public class EditProfileActivity extends AppCompatActivity {
         dayEditText.setText(editData.getDay());
         placeEditText.setText(editData.getPlace());
 
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChildListActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,11 +91,10 @@ public class EditProfileActivity extends AppCompatActivity {
                         name, year, month, day, place, imageUri, gender
                 );
 
-                Intent intent = new Intent();
+                Intent intent = new Intent(getApplicationContext(), ChildListActivity.class);
                 intent.putExtra("position",position);
                 intent.putExtra("editData", editData);
-                setResult(RESULT_OK, intent);
-
+                startActivity(intent);
                 finish();
             }
         });
