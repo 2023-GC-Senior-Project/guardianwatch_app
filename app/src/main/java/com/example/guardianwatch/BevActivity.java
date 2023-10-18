@@ -98,6 +98,7 @@ public class BevActivity extends AppCompatActivity  {
                 // 날짜 선택 다이얼로그를 띄운다.
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         BevActivity.this,
+                        R.style.DatePickerDialogTheme,
                         (view, year, month, dayOfMonth) -> {
                             int monthT = month + 1;
                             bevActivityDate.setText(year+"년 "+month+"월");
@@ -107,7 +108,7 @@ public class BevActivity extends AppCompatActivity  {
                         calendarTime.get(Calendar.MONTH),
                         calendarTime.get(Calendar.DAY_OF_MONTH)
                 );
-                datePickerDialog.getDatePicker().setBackgroundColor(Color.parseColor("#D7E7F1"));
+//                datePickerDialog.getDatePicker().setBackgroundColor(Color.parseColor("#D7E7F1"));
                 datePickerDialog.show();
 
 
