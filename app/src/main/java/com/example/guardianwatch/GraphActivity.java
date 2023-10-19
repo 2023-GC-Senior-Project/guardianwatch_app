@@ -122,7 +122,7 @@ public class GraphActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 heatmap.setImageResource(R.drawable.rectangle7);
-                useKcal.setImageResource(R.drawable.rectangle11);
+                useKcal.setImageResource(R.drawable.rectangle12);
                 moveDistance.setImageResource(R.drawable.rectangle7);
                 graphSentence1.setText("오늘 또래 평균보다 400kcal 높습니다.");
                 graphSentence2.setText("7일 평균 활동량이 또래 평균보다 높습니다.");

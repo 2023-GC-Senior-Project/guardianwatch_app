@@ -99,10 +99,11 @@ public class BevActivity extends AppCompatActivity  {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         BevActivity.this,
                         R.style.DatePickerDialogTheme,
+
                         (view, year, month, dayOfMonth) -> {
                             int monthT = month + 1;
-                            bevActivityDate.setText(year+"년 "+month+"월");
-                            bevActivityDay.setText(day+"");
+                            bevActivityDate.setText(year+"년 "+monthT+"월");
+                            bevActivityDay.setText(dayOfMonth+"");
                         },
                         calendarTime.get(Calendar.YEAR),
                         calendarTime.get(Calendar.MONTH),

@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 선택된 아이템의 배경 -->
+    <item android:drawable="@drawable/child_list_border_selected" android:state_selected="true" />
+    <!-- 선택되지 않은 아이템의 배경 -->
+    <item android:drawable="@drawable/child_list_border" />
+</selector>

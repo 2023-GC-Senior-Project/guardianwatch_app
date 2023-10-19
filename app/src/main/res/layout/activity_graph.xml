@@ -184,7 +184,7 @@
         android:id="@+id/moveDistanceText"
         android:layout_width="100dp"
         android:layout_height="31dp"
-        android:text="이동 거리"
+        android:text="이동 경로"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="15sp"

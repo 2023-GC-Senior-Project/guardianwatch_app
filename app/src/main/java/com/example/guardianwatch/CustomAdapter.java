@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,12 +22,15 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private ArrayList<ChildData> localDataSet;
+    private int selectedPosition = -1;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTextView, birthDateTextView, placeTextView;
         private ImageView profileImageView;
         private ImageView closeImageView;
         private TextView editTextView;
+        private  ImageView crownImageView;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -36,6 +40,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             profileImageView = itemView.findViewById(R.id.profile_image);
             closeImageView = itemView.findViewById(R.id.close);
             editTextView = itemView.findViewById(R.id.edit);
+            crownImageView = itemView.findViewById(R.id.crownIcon);
+            //아이 컴포넌트 누를때
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    notifyItemChanged(selectedPosition); // 이전 선택된 항목의 하이라이트를 제거
+                    selectedPosition = getAdapterPosition();
+                    notifyItemChanged(selectedPosition); // 현재 선택된 항목에 하이라이트 추가
+                }
+            });
+
             // X 누를 시에 확인 메시지 후 아이 목록에서 삭제
             closeImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -60,12 +75,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             editTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, EditProfileActivity.class);
-                    ChildData editData = localDataSet.get(getAdapterPosition());
-                    intent.putExtra("position",getAdapterPosition());
-                    intent.putExtra("editData",editData);
-                    context.startActivity(intent);
+                    ChildData clickedChild = localDataSet.get(getAdapterPosition());
+                    Intent intent = new Intent(view.getContext(), EditProfileActivity.class);
+                    intent.putExtra("childName", clickedChild.getName());
+                    view.getContext().startActivity(intent);
                 }
             });
 
@@ -92,9 +105,28 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.birthDateTextView.setText(data.getYear()+"."+data.getMonth()+"."+data.getDay());
         holder.placeTextView.setText(data.getPlace());
 
-        Uri imageUri = Uri.parse(data.getImageUri());
-        holder.profileImageView.setImageURI(imageUri);
+        if (data.getImageUri() != null && !data.getImageUri().isEmpty()) {
+            Uri imageUri = Uri.parse(data.getImageUri());
+            holder.profileImageView.setImageURI(imageUri);
+        } else {
+            // imageUri가 null이거나 비어 있는 경우, 기본 이미지를 설정
+             holder.profileImageView.setImageResource(R.drawable.default_profile);
+
+        }
+
+        if (position == selectedPosition) {
+            holder.itemView.setSelected(true);
+        } else {
+            holder.itemView.setSelected(false);
+        }
+        if (data.getRepresent() == 1) {
+            holder.crownImageView.setVisibility(View.VISIBLE);
+        } else {
+            holder.crownImageView.setVisibility(View.GONE);
+        }
+
     }
+
 
     @Override
     public int getItemCount() {

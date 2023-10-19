@@ -70,7 +70,7 @@
         android:layout_height="40dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="김서준"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -106,7 +106,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.537">
-
+        <RadioButton
+            android:id="@+id/radioButtonBoy"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:buttonTint="#A0E2E2"
+            android:text="남자"
+            android:textSize="17dp"
+            tools:layout_editor_absoluteX="59dp"
+            tools:layout_editor_absoluteY="364dp" />
+        <View
+            android:layout_width="36dp"
+            android:layout_height="50dp" />
         <RadioButton
             android:id="@+id/radioButtonGirl"
             android:layout_width="80dp"
@@ -118,19 +129,9 @@
             tools:layout_editor_absoluteX="174dp"
             tools:layout_editor_absoluteY="364dp" />
 
-        <View
-            android:layout_width="36dp"
-            android:layout_height="50dp" />
 
-        <RadioButton
-            android:id="@+id/radioButtonBoy"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:buttonTint="#A0E2E2"
-            android:text="남자"
-            android:textSize="17dp"
-            tools:layout_editor_absoluteX="59dp"
-            tools:layout_editor_absoluteY="364dp" />
+
+
 
     </RadioGroup>
     <TextView
@@ -153,7 +154,7 @@
         android:layout_height="38dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="2018"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -222,7 +223,7 @@
         android:layout_height="45dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="07"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -240,7 +241,7 @@
         android:layout_height="38dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="28"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -297,7 +298,7 @@
         android:layout_height="40dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="성남시 가천 어린이집"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
