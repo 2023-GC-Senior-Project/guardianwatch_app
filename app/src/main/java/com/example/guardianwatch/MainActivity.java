@@ -65,10 +65,12 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("예", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        MainActivity.super.onBackPressed();
+                        finishAffinity();  // 현재 액티비티와 같은 taskAffinity를 가진 모든 액티비티를 종료합니다.
+                        System.exit(0);  // 시스템을 통해 앱의 프로세스를 종료합니다.
                     }
                 })
                 .setNegativeButton("취소", null)
                 .show();
     }
+
 }
