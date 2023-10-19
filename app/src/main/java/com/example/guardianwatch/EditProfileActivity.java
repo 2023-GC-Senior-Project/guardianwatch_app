@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,10 +21,14 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 
 public class EditProfileActivity extends AppCompatActivity {
+    private static final int IMAGE_REQUEST_CODE = 100;
 
     ImageView backArrow;
     ImageView profile_image;
@@ -48,7 +55,8 @@ public class EditProfileActivity extends AppCompatActivity {
     RadioButton girl,boy;
     String userId;
     String childName;
-
+    ImageView profileImage;
+    Uri selectedImageUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +76,15 @@ public class EditProfileActivity extends AppCompatActivity {
 
         girl=findViewById(R.id.radioButtonGirl);
         boy=findViewById(R.id.radioButtonBoy);
+        profileImage = findViewById(R.id.profile_image);
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, IMAGE_REQUEST_CODE);
+            }
+        });
 
         userId = UserData.getInstance().getUserId(); // 현재 사용자 ID 가져오기
         childName = getIntent().getStringExtra("childName");
@@ -111,6 +128,31 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // 이미지 요청 코드를 확인하고 결과 코드가 RESULT_OK인 경우에만 작업을 수행
+        if (requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            selectedImageUri = data.getData();
+
+            // 선택된 이미지를 ImageView에 설정
+            profile_image.setImageURI(selectedImageUri);
+        }
+    }
+    public String getPathFromUri(Uri uri) {
+        String path = null;
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor != null) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            path = cursor.getString(column_index);
+            cursor.close();
+        }
+        return path;
+    }
+
     public void fetchKidData(String userId,String childName) {
 
         // Retrofit API 호출
@@ -181,6 +223,11 @@ public class EditProfileActivity extends AppCompatActivity {
                 .baseUrl("http://inclab3.gachon.ac.kr:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        // 파일 경로를 사용하여 이미지 파일 생성
+        File file = new File(getPathFromUri(selectedImageUri));
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
 
         Service service = retrofit.create(Service.class);
         Call<ResponseBody> call = service.editKid(userId, childName, userId, childName, gender, year, month, day, place, null, represent);

@@ -13,6 +13,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,8 @@ public class ChildListActivity extends AppCompatActivity {
 
     TextView childRegisterText;
     ImageView backArrow;
+    TextView noChildText;
+    Button editBtn;
     private boolean shouldRefresh = true;
 
     public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
@@ -63,7 +67,68 @@ public class ChildListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_list);
+        String userId = UserData.getInstance().getUserId();
+        if(childDataList.isEmpty()) {
+            fetchKidsData(UserData.getInstance().getUserId());
+        }
+        noChildText = findViewById(R.id.noChildText);
+        editBtn=findViewById(R.id.editBtn);
 
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(customAdapter.getSelectedPosition() != -1) {
+                    ChildData selectedChild = childDataList.get(customAdapter.getSelectedPosition());
+
+                    // Retrofit을 사용하여 API 호출
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl("http://inclab3.gachon.ac.kr:8000/")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Service service = retrofit.create(Service.class);
+
+                    Call<ResponseBody> call = service.changeRepresent(
+                            userId,
+                            "1"  // 대표 아이로 설정
+                    );
+
+                    call.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            if (response.isSuccessful()) {
+                                try {
+                                    // ResponseBody로부터 String 데이터를 한 번만 가져옵니다.
+                                    String responseData = response.body().string();
+
+                                    Log.d("ChangeRepresent", responseData);
+                                    // 성공적으로 대표 아이를 변경했을 때 로컬 데이터 세트 업데이트
+                                    for (ChildData child : childDataList) {
+                                        child.setRepresent(0);  // 모든 아이들의 represent를 0으로 설정
+                                    }
+                                    selectedChild.setRepresent(1);  // 선택된 아이의 represent를 1로 설정
+                                    customAdapter.notifyDataSetChanged();
+                                } catch(IOException e){
+                                    // 오류 메시지 처리
+                                    Toast.makeText(ChildListActivity.this, "대표 아이를 설정하는데 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            // 네트워크 오류 처리
+                            Toast.makeText(ChildListActivity.this, "네트워크 에러: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    Toast.makeText(ChildListActivity.this, "아이를 먼저 선택해주세요", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
         //아이등록 누를시에 아이등록 페이지로 이동
         childRegisterText=findViewById(R.id.childRegister);
         childRegisterText.setOnClickListener(new View.OnClickListener() {
@@ -74,10 +139,6 @@ public class ChildListActivity extends AppCompatActivity {
                                                  }
                                              });
 
-        String userId = UserData.getInstance().getUserId();
-        if(childDataList.isEmpty()) {
-            fetchKidsData(UserData.getInstance().getUserId());
-        }
 
         //뒤로가기 버튼 누를 시에 아이 리스트 페이지로 이동
         backArrow=findViewById(R.id.backArrow);
@@ -90,13 +151,18 @@ public class ChildListActivity extends AppCompatActivity {
             }
         });
 
-
-        if(childDataList.isEmpty()) {
-            String uriString1 = "android.resource://" + getPackageName() + "/" + R.drawable.lee_image;
-
-            String uriString2 = "android.resource://" + getPackageName() + "/" + R.drawable.kim_image;
-            childDataList.add(new ChildData("김서준", "2018","7","28", "가천 어린이집",uriString2,0,0));
-        }
+        //아이 목록이 비었을경우
+//        if(childDataList.isEmpty()) {
+////            String uriString1 = "android.resource://" + getPackageName() + "/" + R.drawable.lee_image;
+////
+////            String uriString2 = "android.resource://" + getPackageName() + "/" + R.drawable.kim_image;
+////            childDataList.add(new ChildData("김서준", "2018","7","28", "가천 어린이집",uriString2,0,0));
+//            noChildText=findViewById(R.id.noChildText);
+//            noChildText.setText("아직 등록된 아이가 없어요");
+//        }
+//        else{
+//            noChildText.setText("");
+//        }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -123,6 +189,8 @@ public class ChildListActivity extends AppCompatActivity {
     }
 
 
+
+    //아이 목록 불러오기
     public void fetchKidsData(String userId) {
 
         // Retrofit API 호출
@@ -155,6 +223,16 @@ public class ChildListActivity extends AppCompatActivity {
                         childDataList.clear();
                         childDataList.addAll(kidsList);
                         customAdapter.notifyDataSetChanged();
+
+                        // 여기서 noChildText를 업데이트합니다.
+//                        if (childDataList.isEmpty()) {
+//                            noChildText.setText("아직 등록된 아이가 없어요");
+//                            noChildText.setVisibility(View.VISIBLE);
+//                        } else {
+//                            noChildText.setText("");
+//                            noChildText.setVisibility(View.GONE);
+//                        }
+
                     } catch (Exception e) {
                         Toast.makeText(ChildListActivity.this, "데이터 파싱에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
                     }

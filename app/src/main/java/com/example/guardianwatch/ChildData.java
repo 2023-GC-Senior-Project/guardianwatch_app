@@ -64,4 +64,8 @@ public class ChildData implements Serializable {
     public int getRepresent() {
         return represent;
     }
+
+    public void setRepresent(int represent) {
+        this.represent = represent;
+    }
 }

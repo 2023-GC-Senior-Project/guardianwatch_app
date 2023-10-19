@@ -23,13 +23,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     private ArrayList<ChildData> localDataSet;
     private int selectedPosition = -1;
-
+    public int getSelectedPosition() {
+        return selectedPosition;
+    }
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTextView, birthDateTextView, placeTextView;
         private ImageView profileImageView;
         private ImageView closeImageView;
         private TextView editTextView;
         private  ImageView crownImageView;
+
 
 
         public ViewHolder(@NonNull View itemView) {

@@ -69,5 +69,9 @@ public interface Service {
             @Field("represent") String represent
     );
 
+    @FormUrlEncoded
+    @PUT("represent/{id}")
+    Call<ResponseBody> changeRepresent(
+            @Path("id") String user_id, @Field("represent") String represent);
 
 }
