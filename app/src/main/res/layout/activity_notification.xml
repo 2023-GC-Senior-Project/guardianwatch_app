@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.01"
-        app:tint="#80000000" />
+        app:tint="#ADB9C0" />
 
     <View
         android:id="@+id/notificationAll"
@@ -39,17 +39,17 @@
 
     <TextView
         android:id="@+id/notificationAllText"
-        android:layout_width="44dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="36dp"
         android:text="전체"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.109" />
 
     <View
         android:id="@+id/notificationSafe"
@@ -68,17 +68,17 @@
 
     <TextView
         android:id="@+id/notificationSafeText"
-        android:layout_width="45dp"
-        android:layout_height="36dp"
+        android:layout_width="43dp"
+        android:layout_height="33dp"
         android:text="안전"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintHorizontal_bias="0.413"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.108" />
 
     <View
         android:id="@+id/notificationEat"
@@ -97,17 +97,17 @@
 
     <TextView
         android:id="@+id/notificationEatText"
-        android:layout_width="43dp"
-        android:layout_height="37dp"
+        android:layout_width="40dp"
+        android:layout_height="34dp"
         android:text="식사"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.617"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.106" />
+        app:layout_constraintVertical_bias="0.109" />
 
     <View
         android:id="@+id/notificationAction"
@@ -126,17 +126,17 @@
 
     <TextView
         android:id="@+id/notificationActionText"
-        android:layout_width="42dp"
-        android:layout_height="34dp"
+        android:layout_width="46dp"
+        android:layout_height="33dp"
         android:text="활동"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintHorizontal_bias="0.841"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.109" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewNotification"
@@ -147,7 +147,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.602" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,9 +46,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.118"/>
-
     <TextView
-        android:id="@+id/graphActivityDay"
+        android:id="@+id/bevActivityDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="14"
@@ -61,9 +60,9 @@
         app:layout_constraintVertical_bias="0.109" />
 
     <TextView
-        android:id="@+id/graphActivityDate"
-        android:layout_width="128dp"
-        android:layout_height="34dp"
+        android:id="@+id/bevActivityDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="2023년 10월"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -73,6 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.031" />
+
 
     <ImageView
         android:id="@+id/calendar"
@@ -87,7 +87,7 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
-        android:id="@+id/graphView"
+        android:id="@+id/bevView"
         android:layout_width="346dp"
         android:layout_height="317dp"
         android:src="@drawable/rectangle1"
@@ -98,51 +98,16 @@
         app:layout_constraintVertical_bias="0.396" />
 
     <ImageView
-        android:id="@+id/heatmap"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:src="@drawable/rectangle11"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
-
-    <ImageView
-        android:id="@+id/useKcal"
-        android:layout_width="99dp"
-        android:layout_height="54dp"
-        android:src="@drawable/rectangle7"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
-
-    <ImageView
-        android:id="@+id/moveDistance"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:src="@drawable/rectangle7"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.858"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
-    <ImageView
         android:id="@+id/textBox"
         android:layout_width="344dp"
         android:layout_height="225dp"
         android:src="@drawable/textbox_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
+        app:layout_constraintVertical_bias="0.905" />
+
     <ImageView
         android:id="@+id/line1"
         android:layout_width="300dp"
@@ -150,10 +115,10 @@
         android:src="@drawable/rectangle9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761" />
+        app:layout_constraintVertical_bias="0.78" />
 
     <ImageView
         android:id="@+id/line2"
@@ -162,96 +127,94 @@
         android:src="@drawable/rectangle9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.831" />
+        app:layout_constraintVertical_bias="0.85" />
+
     <TextView
-        android:id="@+id/graphSentence3"
+        android:id="@+id/longPerson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1달 평균 활동량이 또래 평균보다 적습니다."
+        android:text="최다 상호작용"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.233"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.877" />
+        app:layout_constraintVertical_bias="0.823" />
 
     <TextView
-        android:id="@+id/moveDistanceText"
-        android:layout_width="100dp"
-        android:layout_height="31dp"
-        android:text="이동 경로"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.862"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
-
-    <TextView
-        android:id="@+id/heatmapText"
-        android:layout_width="100dp"
-        android:layout_height="31dp"
-        android:text="히트맵"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.167"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
-
-    <TextView
-        android:id="@+id/useKcalText"
-        android:layout_width="100dp"
-        android:layout_height="31dp"
-        android:text="소비 칼로리"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
-
-    <TextView
-        android:id="@+id/graphSentence1"
+        android:id="@+id/longAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="오늘 또래 평균보다 400 kcal 높습니다."
+        android:text="최다 행동"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.736" />
+        app:layout_constraintVertical_bias="0.894" />
 
     <TextView
-        android:id="@+id/graphSentence2"
+        android:id="@+id/longPersonData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="7일 평균 활동량이 또래 평균보다 높습니다."
+        android:text="김하온 (총 2시간)"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
+        app:layout_constraintVertical_bias="0.823" />
+
+    <TextView
+        android:id="@+id/longPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="선호 장소"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.752" />
+
+    <TextView
+        android:id="@+id/longPlaceData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상어반 (총 3시간)"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.752" />
+
+    <TextView
+        android:id="@+id/longActionData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="걷기 (총 2시간)"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.713"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.894" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

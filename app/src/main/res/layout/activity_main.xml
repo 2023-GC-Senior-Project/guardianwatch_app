@@ -8,6 +8,84 @@
     android:background="@drawable/basic_background">
 
 
+    <TextView
+        android:id="@+id/subTitle"
+        android:layout_width="170dp"
+        android:layout_height="28dp"
+        android:text="우리 아이의 안전 파트너"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <TextView
+        android:id="@+id/Title1"
+        android:layout_width="171dp"
+        android:layout_height="44dp"
+        android:text="Guardian"
+        android:textColor="#207C98"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.069" />
+
+    <TextView
+        android:id="@+id/Title2"
+        android:layout_width="126dp"
+        android:layout_height="49dp"
+        android:text="Watch"
+        android:textColor="#FEFF74"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.123" />
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309"></androidx.viewpager2.widget.ViewPager2>
+
+    <ImageView
+        android:id="@+id/leftArrow"
+        android:layout_width="56dp"
+        android:layout_height="68dp"
+        android:src="@drawable/ic_arrow_left_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <ImageView
+        android:id="@+id/rightArrow"
+        android:layout_width="56dp"
+        android:layout_height="68dp"
+        android:src="@drawable/ic_arrow_right_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
     <View
         android:id="@+id/childListView"
         android:layout_width="155dp"
@@ -20,20 +98,8 @@
         app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586"
+        app:layout_constraintVertical_bias="0.659"
         tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:layout_width="57dp"
-        android:layout_height="47dp"
-        android:src="@drawable/ic_arrow_right"
-        android:tint="#797937"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
 
     <TextView
         android:id="@+id/childListText"
@@ -48,7 +114,19 @@
         app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
+        app:layout_constraintVertical_bias="0.543" />
+
+    <ImageView
+        android:layout_width="57dp"
+        android:layout_height="47dp"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54"
+        app:tint="#797937" />
 
     <TextView
         android:id="@+id/childListContent"
@@ -62,7 +140,7 @@
         app:layout_constraintHorizontal_bias="0.207"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.564" />
+        app:layout_constraintVertical_bias="0.625" />
 
     <View
         android:id="@+id/activityAmountView"
@@ -76,20 +154,22 @@
         app:layout_constraintHorizontal_bias="0.82"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.535"
+        app:layout_constraintVertical_bias="0.601"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:layout_width="57dp"
-        android:layout_height="47dp"
-        android:src="@drawable/ic_arrow_right"
-        android:tint="#6B787D"
+    <TextView
+        android:id="@+id/activityAmountContent"
+        android:layout_width="146dp"
+        android:layout_height="67dp"
+        android:text="아이의 하루를 도표로 확인해보세요."
+        android:textColor="#88000000"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.624" />
 
     <TextView
         android:id="@+id/activityAmountText"
@@ -101,29 +181,29 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintHorizontal_bias="0.969"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintVertical_bias="0.54" />
 
-    <TextView
-        android:id="@+id/activityAmountContent"
-        android:layout_width="146dp"
-        android:layout_height="67dp"
-        android:text="하루동안 아이의 활동 경로를 확인해보세요."
-        android:textColor="#88000000"
-        android:textSize="15sp"
+    <ImageView
+        android:layout_width="57dp"
+        android:layout_height="47dp"
+        android:src="@drawable/ic_arrow_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563" />
+        app:layout_constraintVertical_bias="0.539"
+        app:tint="#6B787D" />
+
 
     <View
         android:id="@+id/alarmView"
         android:layout_width="155dp"
         android:layout_height="135dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/rectangle3"
         android:clickable="true"
         android:focusable="true"
@@ -132,20 +212,34 @@
         app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82"
+        app:layout_constraintVertical_bias="0.882"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/alarmContent"
+        android:layout_width="144dp"
+        android:layout_height="62dp"
+        android:text="아이의 행동을 실시간 알림으로 받아보세요."
+        android:textColor="#88000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867" />
 
     <ImageView
         android:layout_width="57dp"
         android:layout_height="47dp"
         android:src="@drawable/ic_arrow_right"
-        android:tint="#6B7B5D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.735" />
+        app:layout_constraintVertical_bias="0.791"
+        app:tint="#6B7B5D" />
 
     <TextView
         android:id="@+id/alarmText"
@@ -160,21 +254,8 @@
         app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
+        app:layout_constraintVertical_bias="0.78" />
 
-    <TextView
-        android:id="@+id/alarmContent"
-        android:layout_width="144dp"
-        android:layout_height="62dp"
-        android:text="아이의 행동을 실시간 알림으로 받아보세요."
-        android:textColor="#88000000"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.811" />
 
     <View
         android:id="@+id/activityRecordView"
@@ -188,20 +269,8 @@
         app:layout_constraintHorizontal_bias="0.82"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797"
+        app:layout_constraintVertical_bias="0.868"
         tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:layout_width="57dp"
-        android:layout_height="47dp"
-        android:src="@drawable/ic_arrow_right"
-        android:tint="#6B787D"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
 
     <TextView
         android:id="@+id/activityRecordText"
@@ -216,13 +285,13 @@
         app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649" />
+        app:layout_constraintVertical_bias="0.706" />
 
     <TextView
         android:id="@+id/activityRecordContent"
         android:layout_width="146dp"
         android:layout_height="67dp"
-        android:text="아이의 하루 활동량을 확인해보세요."
+        android:text="아이의 하루를 영상으로 확인해보세요."
         android:textColor="#88000000"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -230,6 +299,18 @@
         app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.739" />
+        app:layout_constraintVertical_bias="0.798" />
+
+    <ImageView
+        android:layout_width="57dp"
+        android:layout_height="47dp"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708"
+        app:tint="#6B787D" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

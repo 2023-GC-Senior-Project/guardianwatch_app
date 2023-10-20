@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.01"
-        app:tint="#80000000" />
+        app:tint="#ADB9C0" />
 
 
 
@@ -70,7 +70,9 @@
         android:layout_height="40dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="김서준"
+        android:hint=""
+        android:inputType="text"
+        android:imeOptions="actionNext"
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -106,7 +108,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.537">
-
+        <RadioButton
+            android:id="@+id/radioButtonBoy"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:buttonTint="#A0E2E2"
+            android:text="남자"
+            android:textSize="17dp"
+            tools:layout_editor_absoluteX="59dp"
+            tools:layout_editor_absoluteY="364dp" />
+        <View
+            android:layout_width="36dp"
+            android:layout_height="50dp" />
         <RadioButton
             android:id="@+id/radioButtonGirl"
             android:layout_width="80dp"
@@ -118,19 +131,9 @@
             tools:layout_editor_absoluteX="174dp"
             tools:layout_editor_absoluteY="364dp" />
 
-        <View
-            android:layout_width="36dp"
-            android:layout_height="50dp" />
 
-        <RadioButton
-            android:id="@+id/radioButtonBoy"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:buttonTint="#A0E2E2"
-            android:text="남자"
-            android:textSize="17dp"
-            tools:layout_editor_absoluteX="59dp"
-            tools:layout_editor_absoluteY="364dp" />
+
+
 
     </RadioGroup>
     <TextView
@@ -153,10 +156,12 @@
         android:layout_height="38dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="2018"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
+        android:inputType="number"
+        android:imeOptions="actionNext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.189"
@@ -169,6 +174,7 @@
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:background="@drawable/rectangle_shape"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.158"
@@ -222,10 +228,12 @@
         android:layout_height="45dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="07"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
+        android:inputType="number"
+        android:imeOptions="actionNext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -240,10 +248,12 @@
         android:layout_height="38dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="28"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
+        android:inputType="number"
+        android:imeOptions="actionNext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.781"
@@ -297,7 +307,7 @@
         android:layout_height="40dp"
         android:layout_weight="10"
         android:background="@null"
-        android:hint="성남시 가천 어린이집"
+        android:hint=""
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -317,6 +327,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text"
         app:layout_constraintVertical_bias="0.767" />
 
     <Button
