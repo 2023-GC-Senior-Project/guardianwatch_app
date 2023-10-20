@@ -1,5 +1,7 @@
 package com.example.guardianwatch;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,17 +9,27 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
@@ -65,8 +77,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                         builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                localDataSet.remove(getAdapterPosition());
-                                notifyItemRemoved(getAdapterPosition());
+//                                localDataSet.remove(getAdapterPosition());
+//                                notifyItemRemoved(getAdapterPosition());
+                                // 해당 아이의 정보를 서버에서 삭제하는 코드 추가
+                                ChildData childToDelete = localDataSet.get(getAdapterPosition());
+                                deleteChild(childToDelete, view.getContext(), getAdapterPosition());
                             }
                         });
                         builder.setNegativeButton("아니오", null);
@@ -88,6 +103,53 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }
     }
 
+    private void deleteChild(ChildData child, Context context, int position) {
+        // Retrofit을 사용하여 API 호출
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://inclab3.gachon.ac.kr:8000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Service service = retrofit.create(Service.class);
+
+        Call<ResponseBody> call = service.deleteChild(UserData.getInstance().getUserId(), child.getName());
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    // 아이 정보 삭제 성공
+                    localDataSet.remove(position);
+                    notifyItemRemoved(position);
+
+                    // 로그 추가: 아이 정보 삭제 성공
+                    Log.d("delete", "Child deleted successfully with name: " + child.getName());
+                } else {
+                    Toast.makeText(context, "아이를 삭제하는데 실패했습니다.", Toast.LENGTH_SHORT).show();
+                    // 로그 추가: 아이 정보 삭제 실패 (HTTP 응답 에러)
+                    String errorMsg = "";
+                    if (response.errorBody() != null) {
+                        try {
+                            errorMsg = response.errorBody().string();
+                        } catch (IOException e) {
+                            errorMsg = "Failed to extract error message from response body.";
+                            Log.e("delete", errorMsg, e);
+                        }
+                    }
+
+                    Log.e("delete", "Failed to delete child. Server responded with status: " + response.code() + ". Message: " + errorMsg);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "네트워크 오류: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                // 로그 추가: 아이 정보 삭제 실패 (네트워크 오류)
+                Log.e("delete", "Network error while deleting child: " + t.getMessage());
+            }
+        });
+    }
 
     public CustomAdapter(ArrayList<ChildData> dataSet) {
         localDataSet = dataSet;

@@ -3,6 +3,7 @@ package com.example.guardianwatch;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -73,5 +74,9 @@ public interface Service {
     @PUT("represent/{id}")
     Call<ResponseBody> changeRepresent(
             @Path("id") String user_id, @Field("represent") String represent);
+
+    @DELETE("delete_kid/{id}/{name}")
+    Call<ResponseBody> deleteChild(
+            @Path("id") String id, @Path("name") String name);
 
 }

@@ -15,7 +15,7 @@
         android:layout_width="74dp"
         android:layout_height="68dp"
         android:src="@drawable/ic_arrow_left"
-        app:tint="#80000000"
+        app:tint="#ADB9C0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

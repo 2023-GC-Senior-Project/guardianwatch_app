@@ -14,7 +14,7 @@
         android:layout_width="74dp"
         android:layout_height="68dp"
         android:src="@drawable/ic_arrow_left"
-        android:tint="#80000000"
+        android:tint="#ADB9C0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -72,6 +72,9 @@
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
+        android:inputType="text"
+        android:imeOptions="actionNext"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.322"
@@ -93,12 +96,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.464" />
-    <RadioGroup
-        android:id="@+id/radioGroupGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </RadioGroup>
 
     <TextView
         android:id="@+id/birthLabel"
@@ -121,6 +118,8 @@
         android:layout_weight="10"
         android:background="@null"
         android:hint="YYYY"
+        android:inputType="number"
+        android:imeOptions="actionNext"
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -176,6 +175,8 @@
         android:text="월"
         android:textColor="#000000"
         android:textSize="17sp"
+        android:inputType="number"
+        android:imeOptions="actionNext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.62"
@@ -190,6 +191,7 @@
         android:layout_weight="10"
         android:background="@null"
         android:hint="MM"
+        android:inputType="number"
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -208,6 +210,8 @@
         android:layout_weight="10"
         android:background="@null"
         android:hint="DD"
+        android:inputType="number"
+        android:imeOptions="actionNext"
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
@@ -268,6 +272,7 @@
         android:textColor="#000000"
         android:textColorHint="#80000000"
         android:textSize="15sp"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.322"

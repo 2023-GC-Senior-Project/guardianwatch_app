@@ -10,7 +10,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -57,6 +59,17 @@ public class EditProfileActivity extends AppCompatActivity {
     String childName;
     ImageView profileImage;
     Uri selectedImageUri;
+    // 화면 터치시 키보드 내리기
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View view = getCurrentFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        if (view != null) {
+
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +111,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        //수정하기 버튼 누를시에 아이 정보 변경
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -240,8 +253,8 @@ public class EditProfileActivity extends AppCompatActivity {
                     try {
                         // ResponseBody로부터 String 데이터를 한 번만 가져옵니다.
                         String responseData = response.body().string();
-
                         Log.d("EditChild", responseData);
+
 //                      로그에 responseData를 출력합니다.
                         Toast.makeText(EditProfileActivity.this, "아이 정보 수정 성공!", Toast.LENGTH_SHORT).show();
                         Toast.makeText(EditProfileActivity.this,gender ,Toast.LENGTH_SHORT).show();
@@ -250,8 +263,19 @@ public class EditProfileActivity extends AppCompatActivity {
 //                            resultIntent.putExtra("newChild", childData);
 //                            setResult(Activity.RESULT_OK, resultIntent);
                         finish();
-                        responseData = response.body().string();
-                    } catch (IOException e) {
+                    } catch (IOException ex) {
+                        String errorMsg = "";
+                        if (response.errorBody() != null) {
+                            try {
+                                errorMsg = response.errorBody().string();
+                            } catch (IOException e) {
+                                errorMsg = "Failed to extract error message from response body.";
+                                Log.e("delete", errorMsg, e);
+                            }
+                        }
+
+                        Log.e("delete", "Failed to delete child. Server responded with status: " + response.code() + ". Message: " + errorMsg);
+
                         Toast.makeText(EditProfileActivity.this, "데이터 파싱에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
                     }
 
@@ -268,12 +292,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
             }
         });
-        // 결과를 MainActivity로 전달하는 방법 중 하나: 인텐트 사용
-//                Intent resultIntent = new Intent();
-//                resultIntent.putExtra("newChild", childData);
-//                setResult(Activity.RESULT_OK, resultIntent);
-//                finish();
+
     }
-//});
-//    }
+
 }

@@ -8,7 +8,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -31,12 +33,40 @@ public class MainActivity extends AppCompatActivity {
     View alarmView;
     View activityAmountView;
     View activityRecordView;
+    ViewPager2 viewPager2;
+    ImageView leftArrow,rightArrow;
+    List<SliderItem> sliderItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        viewPager2 = findViewById(R.id.viewPager);
+
+        leftArrow = findViewById(R.id.leftArrow);
+        rightArrow = findViewById(R.id.rightArrow);
+
+        leftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentItem = viewPager2.getCurrentItem();
+                if (currentItem > 0) {
+                    viewPager2.setCurrentItem(currentItem - 1);
+                }
+            }
+        });
+
+        rightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentItem = viewPager2.getCurrentItem();
+                if (currentItem < sliderItems.size() - 1) { // sliderItems는 ViewPager의 항목 수를 가져오는 코드로 수정해야 합니다.
+                    viewPager2.setCurrentItem(currentItem + 1);
+                }
+            }
+        });
         //아이 목록 누를시에 아이 목록 페이지로 이동
         childListView=findViewById(R.id.childListView);
         alarmView=findViewById(R.id.alarmView);
@@ -117,15 +147,28 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     try {
+
                         String responseData = response.body().string();
+                        Log.d("MAIN_ACTIVITY", "Response received: " + responseData);
+
                         Gson gson = new Gson();
                         Type listType = new TypeToken<List<ChildData>>() {
                         }.getType();
                         List<ChildData> kidsList = gson.fromJson(responseData, listType);
 
-                        List<SliderItem> sliderItems = new ArrayList<>();
+                        SliderItem representChild = null;  // 대표 아이를 저장할 변수
+
                         for (ChildData child : kidsList) {
-                            sliderItems.add(new SliderItem("DEFAULT_PROFILE_IMAGE", child.getName(), child.getRepresent()));
+                            SliderItem item = new SliderItem("DEFAULT_PROFILE_IMAGE", child.getName(), child.getRepresent());
+                            if(child.getRepresent() == 1) {
+                                representChild = item;  // 대표 아이를 저장
+                            } else {
+                                sliderItems.add(item);
+                            }
+                        }
+                        // 대표 아이가 있으면 맨 앞에 추가
+                        if(representChild != null) {
+                            sliderItems.add(0, representChild);
                         }
 
                         SliderAdapter adapter = new SliderAdapter(sliderItems);

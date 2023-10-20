@@ -1,12 +1,16 @@
 package com.example.guardianwatch;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.graphics.drawable.Icon;
 import android.media.Image;
@@ -74,7 +78,7 @@ public class ChildListActivity extends AppCompatActivity {
         noChildText = findViewById(R.id.noChildText);
         editBtn=findViewById(R.id.editBtn);
 
-
+        //대표아이 변경 버튼 누를시 대표 변경
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -187,8 +191,22 @@ public class ChildListActivity extends AppCompatActivity {
             }
         }
     }
-
-
+//
+//    public class SharedViewModel extends ViewModel {
+//        private final MutableLiveData<Boolean> isRepresentativeChanged = new MutableLiveData<>();
+//
+//        public MutableLiveData<Boolean> getIsRepresentativeChanged() {
+//            return isRepresentativeChanged;
+//        }
+//
+//        public void representativeChanged() {
+//            isRepresentativeChanged.setValue(true);
+//        }
+//
+//        public void resetRepresentativeChanged() {
+//            isRepresentativeChanged.setValue(false);
+//        }
+//    }
 
     //아이 목록 불러오기
     public void fetchKidsData(String userId) {
@@ -224,6 +242,25 @@ public class ChildListActivity extends AppCompatActivity {
                         childDataList.addAll(kidsList);
                         customAdapter.notifyDataSetChanged();
 
+//// ViewModel 선언
+//                        SharedViewModel sharedViewModel = new ViewModelProvider(ChildListActivity.this).get(SharedViewModel.class);
+//
+//// 대표 아이 변경 성공 시
+//                        // ViewModel의 변경 사항 관찰
+//                        sharedViewModel.getIsRepresentativeChanged().observe(ChildListActivity.this, isChanged -> {
+//                            if (isChanged) {
+//                                // ViewPager2의 아이 데이터를 새로고침
+//                                fetchKidsData(UserData.getInstance().getUserId());
+//                                sharedViewModel.resetRepresentativeChanged();
+//                            }
+//                        });
+//
+//// 대표 아이 변경 성공 시
+//                        SharedPreferences sharedPreferences = getSharedPreferences("MyApp", MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sharedPreferences.edit();
+//                        editor.putBoolean("represent_changed", true);
+//                        editor.apply();
+
                         // 여기서 noChildText를 업데이트합니다.
 //                        if (childDataList.isEmpty()) {
 //                            noChildText.setText("아직 등록된 아이가 없어요");
@@ -256,6 +293,17 @@ public class ChildListActivity extends AppCompatActivity {
         }
         shouldRefresh = true;  // Reset the flag for next time
 //        fetchKidsData(UserData.getInstance().getUserId()); // 화면에 다시 돌아올 때마다 아이 목록을 다시 가져오기
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyApp", MODE_PRIVATE);
+        boolean isRepresentChanged = sharedPreferences.getBoolean("represent_changed", false);
+        if (isRepresentChanged) {
+            // ViewPager2의 아이 데이터를 새로고침
+            fetchKidsData(UserData.getInstance().getUserId());
+            // reset the flag
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("represent_changed", false);
+            editor.apply();
+        }
     }
 
     @Override
