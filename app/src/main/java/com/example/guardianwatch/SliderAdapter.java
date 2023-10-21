@@ -1,5 +1,6 @@
 package com.example.guardianwatch;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,20 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
 //                .load(sliderItem.getImageUrl())
 //                .into(holder.profileImage);
 
+        if("김지안".equals(sliderItem.getText()))
+            holder.profileImage.setImageResource(R.drawable.lee_image);
+        else if("김서준".equals(sliderItem.getText()))
+            holder.profileImage.setImageResource(R.drawable.kim_image);
+        else if("최지우".equals(sliderItem.getText()))
+            holder.profileImage.setImageResource(R.drawable.choi_image);
+        else if("홍길순".equals(sliderItem.getText()))
+            holder.profileImage.setImageResource(R.drawable.hongs_image);
+        else if("홍길동".equals(sliderItem.getText()))
+            holder.profileImage.setImageResource(R.drawable.hongd_image);
+        else {
+            // imageUri가 null이거나 비어 있는 경우, 기본 이미지를 설정
+            holder.profileImage.setImageResource(R.drawable.default_profile);
+        }
         // 텍스트 설정
         holder.childName.setText(sliderItem.getText());
 

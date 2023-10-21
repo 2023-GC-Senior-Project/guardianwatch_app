@@ -56,7 +56,7 @@ public class EditProfileActivity extends AppCompatActivity {
     int gender;
     RadioButton girl,boy;
     String userId;
-    String childName;
+    String childName,editedChildName;
     ImageView profileImage;
     Uri selectedImageUri;
     // 화면 터치시 키보드 내리기
@@ -100,6 +100,8 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
         userId = UserData.getInstance().getUserId(); // 현재 사용자 ID 가져오기
+//        Toast.makeText(EditProfileActivity.this, userId, Toast.LENGTH_SHORT).show();
+
         childName = getIntent().getStringExtra("childName");
         fetchKidData(userId, childName); // 아이의 정보 로드하기
 
@@ -115,8 +117,12 @@ public class EditProfileActivity extends AppCompatActivity {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 userId = UserData.getInstance().getUserId(); // 현재 사용자 ID 가져오기
-                childName = getIntent().getStringExtra("childName");
+//                childName = getIntent().getStringExtra("childName");
+                editedChildName=nameEditText.getText().toString();
+//                Toast.makeText(EditProfileActivity.this, userId, Toast.LENGTH_SHORT).show();
+
                 String year = yearEditText.getText().toString();
                 String month = monthEditText.getText().toString();
                 String day = dayEditText.getText().toString();
@@ -134,7 +140,17 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
                 String place = placeEditText.getText().toString();
                 int represent=0;
-                updateKidData(userId, childName,Integer.toString(gender), year, month, day, place, Integer.toString(represent));
+                Log.d("edit_kid", userId);
+                Log.d("edit_kid", childName);
+                Log.d("edit_kid", Integer.toString(gender));
+                Log.d("edit_kid", year);
+                Log.d("edit_kid", month);
+                Log.d("edit_kid", day);
+                Log.d("edit_kid", place);
+                Log.d("edit_kid", Integer.toString(represent));
+
+                updateKidData(userId, editedChildName,Integer.toString(gender), year, month, day, place);
+
                 Intent intent = new Intent(getApplicationContext(), ChildListActivity.class);
                 startActivity(intent);
                 finish();
@@ -192,58 +208,73 @@ public class EditProfileActivity extends AppCompatActivity {
                         // String 데이터를 원하는 데이터 형식으로 변환합니다.
                         // 여기서는 Gson을 사용하여 JSON 문자열을 ChildData로 변환하는 예를 제공합니다.
                         Gson gson = new Gson();
-                        Type type = new TypeToken<ChildData>() {}.getType();
+                        Type type = new TypeToken<ChildData>() {
+                        }.getType();
                         ChildData childData = gson.fromJson(responseData, type);
 
                         // UI 업데이트
 //                        if(imageUri == null)
 //                            imageUri = "android.resource://" + getPackageName() + "/" + R.drawable.default_profile;
 
-//                        profile_image.setImageURI(Uri.parse(childData.getImageUri()));
-                        profile_image.setImageResource(R.drawable.default_profile);
+                        if ("김지안".equals(childData.getName()))
+                            profile_image.setImageResource(R.drawable.lee_image);
+                        else if ("김서준".equals(childData.getName()))
+                            profile_image.setImageResource(R.drawable.kim_image);
+                        else if ("최지우".equals(childData.getName()))
+                            profile_image.setImageResource(R.drawable.choi_image);
+                        else if ("홍길순".equals(childData.getName()))
+                            profile_image.setImageResource(R.drawable.hongs_image);
+                        else if ("홍길동".equals(childData.getName()))
+                            profile_image.setImageResource(R.drawable.hongd_image);
+                        else
+                            // imageUri가 null이거나 비어 있는 경우, 기본 이미지를 설정
+                            profile_image.setImageResource(R.drawable.default_profile);
+//
 
-                        nameEditText.setText(childData.getName());
-                        gender = childData.getGender();
-                        if(gender == 0){
-                            radioButtonBoy.setChecked(true);
-                            radioButtonGirl.setChecked(false);
-                        } else {
-                            radioButtonBoy.setChecked(false);
-                            radioButtonGirl.setChecked(true);
+                            nameEditText.setText(childData.getName());
+                            gender = childData.getGender();
+                            if (gender == 0) {
+                                radioButtonBoy.setChecked(true);
+                                radioButtonGirl.setChecked(false);
+                            } else {
+                                radioButtonBoy.setChecked(false);
+                                radioButtonGirl.setChecked(true);
+                            }
+                            yearEditText.setText(childData.getYear());
+                            monthEditText.setText(childData.getMonth());
+                            dayEditText.setText(childData.getDay());
+                            placeEditText.setText(childData.getPlace());
+
                         }
-                        yearEditText.setText(childData.getYear());
-                        monthEditText.setText(childData.getMonth());
-                        dayEditText.setText(childData.getDay());
-                        placeEditText.setText(childData.getPlace());
-
-                    } catch (Exception e) {
-                        Toast.makeText(EditProfileActivity.this, "데이터 파싱에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                        catch(Exception e){
+                            Toast.makeText(EditProfileActivity.this, "데이터 파싱에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                } else {
-                    Toast.makeText(EditProfileActivity.this, "데이터를 가져오는데 실패했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                    else{
+                        Toast.makeText(EditProfileActivity.this, "데이터를 가져오는데 실패했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
+
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(EditProfileActivity.this, "네트워크 오류: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
+            public void onFailure(Call<ResponseBody> call, Throwable t){
+                    Toast.makeText(EditProfileActivity.this, "네트워크 오류: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
         });
-    }
-
-    public void updateKidData(String userId, String childName, String gender, String year, String month, String day, String place, String represent){
+        }
+    public void updateKidData(String userId, String editedChildName, String gender, String year, String month, String day, String place){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://210.102.178.157:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         // 파일 경로를 사용하여 이미지 파일 생성
-        File file = new File(getPathFromUri(selectedImageUri));
-        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
+//        File file = new File(getPathFromUri(selectedImageUri));
+//        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+//        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
 
         Service service = retrofit.create(Service.class);
-        Call<ResponseBody> call = service.editKid(userId, childName, userId, childName, gender, year, month, day, place, null, represent);
+        Call<ResponseBody> call = service.editKid(userId, childName, userId, editedChildName, gender, year, month, day, place, null);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

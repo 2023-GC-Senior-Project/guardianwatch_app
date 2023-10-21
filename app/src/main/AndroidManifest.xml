@@ -20,6 +20,9 @@
             android:name=".ChildListActivity"
             android:exported="true" />
         <activity
+            android:name=".FullScreenVideoActivity"
+            android:exported="true" />
+        <activity
             android:name=".EditProfileActivity"
             android:exported="true" />
         <activity

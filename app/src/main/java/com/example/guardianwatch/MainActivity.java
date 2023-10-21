@@ -108,8 +108,12 @@ public class MainActivity extends AppCompatActivity {
         activityRecordView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SliderItem currentItem = sliderItems.get(mainPageKid_index);
                 Intent intent = new Intent(getApplicationContext(), BevActivity.class);
+                intent.putExtra("userId", UserData.getInstance().getUserId());
+                intent.putExtra("kidName", currentItem.getText());
                 startActivity(intent);
+
             }
         });
 //        ViewPager2 viewPager2 = findViewById(R.id.viewPager);

@@ -66,8 +66,7 @@ public interface Service {
             @Field("month") String month,
             @Field("day") String day,
             @Field("place") String place,
-            @Field("image") String image,
-            @Field("represent") String represent
+            @Field("image") String image
     );
 
     @FormUrlEncoded
@@ -80,7 +79,7 @@ public interface Service {
             @Path("id") String id, @Path("name") String name);
 
     // http://210.102.178.157:8000/heatmap/:id/:name/:year/:month/:day
-    @GET("heatmap/{id}/{name}/{year}{month}{day}")
+    @GET("heatmap/{id}/{name}/{year}/{month}/{day}")
     Call<ResponseBody> getHeatMap(
             @Path("id") String id,
             @Path("name") String name,
@@ -88,12 +87,30 @@ public interface Service {
             @Path("month") String month,
             @Path("day") String day);
     //http://210.102.178.157:8000/pathmap/:id/:name/:year/:month/:day
-    @GET("pathmap/{id}/{name}/{year}{month}{day}")
+    @GET("pathmap/{id}/{name}/{year}/{month}/{day}")
     Call<ResponseBody> getPathMap(
             @Path("id") String id,
             @Path("name") String name,
             @Path("year") String year,
             @Path("month") String month,
             @Path("day") String day);
+    // http://210.102.178.157:8000/BEV/:id/:name/:year/:month/:day/:ch
+//    @GET("BEV/{id}/{name}/{year}/{month}/{day}/{ch}")
+//    Call<ResponseBody> getBEV(
+//            @Path("id") String id,
+//            @Path("name") String name,
+//            @Path("year") String year,
+//            @Path("month") String month,
+//            @Path("day") String day,
+//            @Path("ch") String ch);
+
+    @GET("analysis/{id}/{name}/{year}/{month}/{day}/{ch}")
+    Call<ResponseBody> getAnalysis(
+            @Path("id") String id,
+            @Path("name") String name,
+            @Path("year") String year,
+            @Path("month") String month,
+            @Path("day") String day,
+            @Path("ch") String ch);
 
 }

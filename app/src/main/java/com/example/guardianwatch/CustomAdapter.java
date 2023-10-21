@@ -173,7 +173,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         if (data.getImageUri() != null && !data.getImageUri().isEmpty()) {
             Uri imageUri = Uri.parse(data.getImageUri());
             holder.profileImageView.setImageURI(imageUri);
-        } else {
+        }else if("김지안".equals(data.getName()))
+            holder.profileImageView.setImageResource(R.drawable.lee_image);
+        else if("김서준".equals(data.getName()))
+            holder.profileImageView.setImageResource(R.drawable.kim_image);
+        else if("최지우".equals(data.getName()))
+            holder.profileImageView.setImageResource(R.drawable.choi_image);
+        else if("홍길순".equals(data.getName()))
+            holder.profileImageView.setImageResource(R.drawable.hongs_image);
+        else if("홍길동".equals(data.getName()))
+            holder.profileImageView.setImageResource(R.drawable.hongd_image);
+        else {
             // imageUri가 null이거나 비어 있는 경우, 기본 이미지를 설정
              holder.profileImageView.setImageResource(R.drawable.default_profile);
 
@@ -191,6 +201,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         } else {
             holder.crownImageView.setVisibility(View.GONE);
         }
+
+
 
     }
 

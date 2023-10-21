@@ -1,5 +1,6 @@
 package com.example.guardianwatch;
 
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -31,6 +32,9 @@ public class ChildData implements Serializable {
         this.image = image;
         this.gender = gender;
         this.represent=represent;
+//        if(name=="김지안"){
+//            this.image = "android.resource://" + getPackageName() + "/" + R.drawable.kim_image;
+//        }
     }
 
     public String getYear() {
