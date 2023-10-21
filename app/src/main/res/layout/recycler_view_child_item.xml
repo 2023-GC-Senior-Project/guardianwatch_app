@@ -12,12 +12,26 @@
         android:layout_width="match_parent"
         android:layout_height="127dp"
         tools:context=".MainActivity">
+        <ImageView
+            android:id="@+id/crownIcon"
+            android:layout_width="48dp"
+            android:layout_height="34dp"
+            android:layout_marginBottom="65dp"
+            android:rotation="314"
+            android:src="@drawable/crown"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.118" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="7dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginEnd="5dp"
             android:clickable="true"
             android:focusable="true"
             android:scaleType="centerCrop"
@@ -30,20 +44,7 @@
             app:layout_constraintVertical_bias="0.481"
             app:shapeAppearanceOverlay="@style/CircleImageView" />
 
-        <ImageView
-            android:id="@+id/crownIcon"
-            android:layout_width="48dp"
-            android:layout_height="34dp"
-            android:layout_marginBottom="65dp"
-            android:rotation="315"
-            android:src="@drawable/crown"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.118" />
+
 
         <ImageView
             android:id="@+id/close"

@@ -30,9 +30,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +45,7 @@ public class ChildListActivity extends AppCompatActivity {
     ImageView backArrow;
     TextView noChildText;
     Button editBtn;
+    ImageView addChildIcon;
     private boolean shouldRefresh = true;
 
     public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
@@ -140,12 +138,14 @@ public class ChildListActivity extends AppCompatActivity {
 
             }
         });
-        //아이등록 누를시에 아이등록 페이지로 이동
-        childRegisterText = findViewById(R.id.childRegister);
-        childRegisterText.setOnClickListener(new View.OnClickListener() {
+        //아이등록 아이콘 누를시에 아이등록 페이지로 이동
+        addChildIcon=findViewById(R.id.addChildIcon);
+        addChildIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ChildRegisterActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 startActivityForResult(intent, CHILD_REGISTER_REQUEST_CODE);
             }
         });
@@ -157,6 +157,8 @@ public class ChildListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 startActivity(intent);
                 finish();
             }
@@ -166,7 +168,7 @@ public class ChildListActivity extends AppCompatActivity {
 //        if(childDataList.isEmpty()) {
 ////            String uriString1 = "android.resource://" + getPackageName() + "/" + R.drawable.lee_image;
 ////
-////            String uriString2 = "android.resource://" + getPackageName() + "/" + R.drawable.kim_image;
+//            String uriString2 = "android.resource://" + getPackageName() + "/" + R.drawable.kim_image;
 ////            childDataList.add(new ChildData("김서준", "2018","7","28", "가천 어린이집",uriString2,0,0));
 //            noChildText=findViewById(R.id.noChildText);
 //            noChildText.setText("아직 등록된 아이가 없어요");
